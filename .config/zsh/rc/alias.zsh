@@ -7,7 +7,8 @@ EXT_SDD_LOC="/run/media/drives/freeNVMe"
 ## Common / general ##
 
 alias nv="nvim"
-alias l="ls -la"
+alias l="ls -a"
+alias ll="ls -la"
 alias rm="rm -I --preserve-root"
 alias del='rm -rf'
 alias untar="tar -zxvf $1"
