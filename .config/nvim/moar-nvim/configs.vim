@@ -22,6 +22,12 @@ augroup THE_PRIMEAGEN
 augroup END
 
 " ----------------------------
+" -- perl config (yes)
+" ----------------------------
+
+let g:loaded_perl_provider = 0
+
+" ----------------------------
 " -- python config
 " ----------------------------
 
