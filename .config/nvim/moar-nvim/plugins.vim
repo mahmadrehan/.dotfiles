@@ -44,16 +44,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " TypeScript
     Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-
-    " TS -> Prisma
+    " Prisma / TS
     Plug 'pantharshit00/vim-prisma'
 
     " Dart / Flutter
     Plug 'akinsho/flutter-tools.nvim'
     Plug 'dart-lang/dart-vim-plugin'
-
-    " Python
-    " Plug 'psf/black', { 'branch': 'stable' }
 
     " Java (yes)
     Plug 'mfussenegger/nvim-jdtls'
@@ -67,6 +63,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Git
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 
     " For Visulaizing Vim Marks
     Plug 'kshenoy/vim-signature'
@@ -81,16 +78,22 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " uncategorized utility plugins
     Plug 'preservim/nerdcommenter'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'vim-airline/vim-airline'
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'tpope/vim-projectionist'
     Plug 'nvim-lua/popup.nvim'
+    Plug 'lukas-reineke/indent-blankline.nvim'
+
+    " statusbar madness
+    Plug 'nvim-lualine/lualine.nvim'
+    "Plug 'vim-airline/vim-airline'
 
     " for showing opened files in a fance manner
     Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
     " directory tree stuff
-    Plug 'kyazdani42/nvim-tree.lua'
+    "Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'nvim-neo-tree/neo-tree.nvim'
+    Plug 'MunifTanjim/nui.nvim' " some ui component lib required
 
     " debugging
     Plug 'nvim-lua/plenary.nvim'
@@ -109,11 +112,15 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'sheerun/vim-polyglot'
 
     " ----------------
-    " ricing related, cus hey why not
+    " ricing related, cuz why not
     " ----------------
     " themes
-    Plug 'gruvbox-community/gruvbox'
+    Plug 'ellisonleao/gruvbox.nvim'
     Plug 'luisiacc/gruvbox-baby'
+    Plug 'EdenEast/nightfox.nvim'
+    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+    Plug 'mvllow/modes.nvim'
+
     " devicons
     Plug 'kyazdani42/nvim-web-devicons'
     " for custom theming

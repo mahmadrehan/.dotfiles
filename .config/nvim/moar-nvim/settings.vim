@@ -35,8 +35,7 @@ set cmdheight=2
 set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-set wildmode=longest,list,full
-set wildmenu
+set wildmode=longest,list
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=**/coverage/*

@@ -8,16 +8,25 @@ end
 Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
--- require("0xahmad.git-worktree")
+-- local setups
 require("0xahmad.niowim-treesitter")
-require("0xahmad.nvim-dir-tree")
+require("0xahmad.misc-setups")
+require("0xahmad.neotree")
 require("0xahmad.snippies")
+require("0xahmad.lualine")
 require("0xahmad.bufferline")
 require("0xahmad.colorizer")
 require("0xahmad.telescope")
 require("0xahmad.tab9")
 require("0xahmad.lspee")
 require("0xahmad.cmpee")
+-- theming
+require("0xahmad.theming.linemodes")
+require("0xahmad.theming.nightfox")
+--require("0xahmad.theming.gruvbox")
+--require("0xahmad.theming.tokyonight")
+-- to make the background transparent
+vim.cmd([[highlight Normal ctermbg=none guibg=none]])
 
 P = function(v)
 	print(vim.inspect(v))
