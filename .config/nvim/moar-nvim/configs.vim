@@ -56,7 +56,6 @@ let g:user_emmet_leader_key="<C-l>"
 
 " ----------------------------
 " -- dart config
-
 " ----------------------------
 let g:dart_format_on_save=1
 let g:dart_fmt_options = ['--line-length=92']

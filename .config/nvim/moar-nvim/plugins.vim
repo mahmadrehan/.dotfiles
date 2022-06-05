@@ -83,6 +83,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'lukas-reineke/indent-blankline.nvim'
 
+
     " statusbar madness
     Plug 'nvim-lualine/lualine.nvim'
     "Plug 'vim-airline/vim-airline'

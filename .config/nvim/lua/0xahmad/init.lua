@@ -25,7 +25,8 @@ require("0xahmad.theming.linemodes")
 require("0xahmad.theming.nightfox")
 --require("0xahmad.theming.gruvbox")
 --require("0xahmad.theming.tokyonight")
--- to make the background transparent
+
+-- transparentize background
 vim.cmd([[highlight Normal ctermbg=none guibg=none]])
 
 P = function(v)
