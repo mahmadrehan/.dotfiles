@@ -41,12 +41,12 @@ alias rust="rustc"
 alias pip-update="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 alias dev="./scripts/dev.sh"
-alias change_java_version="sudo archlinux-java set"
+alias cjv="sudo archlinux-java set"
 alias activate="conda activate $1"
 alias deactivate="conda deactivate"
 
-alias riovh="ssh ubuntu@146.59.54.232 -i ~/.ssh/kodeddicted_ed25519"
-alias testingserver="ssh ubuntu@5.39.70.96 -i ~/.ssh/testingserver_ed25519"
+alias rvh="ssh ubuntu@146.59.54.232 -i ~/.ssh/kodeddicted_ed25519"
+alias testingserver="echo '404 server not found'"
 
 alias setupk8s="bash ~/.config/scripts/setup/dev_k8s_cluster.sh"
 
@@ -57,6 +57,7 @@ alias maindrive="cd $DOC_SSD_LOC/main"
 
 alias clib="cd $DOC_SSD_LOC/main/Library"
 alias prjs="cd $DOC_SSD_LOC/main/Projects"
+alias rndm="cd $DOC_SSD_LOC/main/Random"
 alias docs="cd $DOC_SSD_LOC/main/Documentation"
 alias github="cd $DOC_SSD_LOC/main/GitHub"
 
