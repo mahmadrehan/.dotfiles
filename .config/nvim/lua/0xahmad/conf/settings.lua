@@ -22,6 +22,7 @@ vim.opt.backup = false
 
 vim.opt.backspace = { "indent", "eol", "start" }
 
+vim.opt.undodir = os.getenv("HOME") .. "/.local/undodir"
 vim.opt.undodir = "undodir"
 vim.opt.undofile = true
 
@@ -39,7 +40,7 @@ vim.opt.updatetime = 50
 
 -- give all color range to the terminal
 vim.opt.termguicolors = true
-vim.cmd [[ set t_Co=256 ]]
+vim.cmd([[ set t_Co=256 ]])
 -- vim.opt.t_Co = 256
 
 vim.g.mapleader = " "

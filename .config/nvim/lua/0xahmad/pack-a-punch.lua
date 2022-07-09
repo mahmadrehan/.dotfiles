@@ -28,7 +28,7 @@ return packer.startup(function(use)
 
 	-- A pair of autocomplete OP-ness
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
-	--	use("github/copilot.vim")
+	use("github/copilot.vim")
 
 	-- snippet related
 	use("L3MON4D3/LuaSnip")
