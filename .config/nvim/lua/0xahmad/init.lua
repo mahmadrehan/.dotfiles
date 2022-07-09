@@ -1,38 +1,29 @@
-function CreateNoremap(type, opts)
-	return function(lhs, rhs, bufnr)
-		bufnr = bufnr or 0
-		vim.api.nvim_buf_set_keymap(bufnr, type, lhs, rhs, opts)
-	end
-end
+-- vim settings
+require("0xahmad.conf.settings")
+require("0xahmad.conf.configs")
+require("0xahmad.conf.remaps")
 
-Nnoremap = CreateNoremap("n", { noremap = true })
-Inoremap = CreateNoremap("i", { noremap = true })
+-- for initting packer require("0xahmad.pack-a-punch")
 
--- local setups
-require("0xahmad.niowim-treesitter")
-require("0xahmad.misc-setups")
-require("0xahmad.neotree")
-require("0xahmad.snippies")
-require("0xahmad.lualine")
-require("0xahmad.bufferline")
-require("0xahmad.colorizer")
+require("0xahmad.visuals")
+
+-- other setup
 require("0xahmad.telescope")
+require("0xahmad.completionist")
 require("0xahmad.tab9")
-require("0xahmad.lspee")
-require("0xahmad.cmpee")
--- theming
-require("0xahmad.theming.linemodes")
-require("0xahmad.theming.nightfox")
---require("0xahmad.theming.gruvbox")
---require("0xahmad.theming.tokyonight")
+require("0xahmad.lsp")
+require("0xahmad.snippies")
 
--- transparentize background
-vim.cmd([[highlight Normal ctermbg=none guibg=none]])
+-- **when** you finally decide to do this that is.........
+-- require('0xaf2f6ad.debugger')
 
-P = function(v)
-	print(vim.inspect(v))
-	return v
-end
+-- other configs
+require("0xahmad.more_configs.bufferline")
+require("0xahmad.more_configs.commenting")
+require("0xahmad.more_configs.treesitter")
+require("0xahmad.more_configs.treesitter-context")
+require("0xahmad.more_configs.neotree")
+require("0xahmad.more_configs.misc-setups")
 
 if pcall(require, "plenary") then
 	RELOAD = require("plenary.reload").reload_module

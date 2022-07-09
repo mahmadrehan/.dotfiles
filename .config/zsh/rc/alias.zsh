@@ -23,7 +23,7 @@ alias dotconfig="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 
 ## pacman ##
 
-alias pac-update="sudo pacman -Syu"
+alias pac-update="sudo pacman -Syu --noconfirm"
 alias pac-search="sudo pacman -sS $1"
 alias pac-show-unused="sudo pacman -Qtdq"
 alias pac-clean="sudo pacman -Sc"

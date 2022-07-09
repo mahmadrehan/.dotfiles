@@ -1,6 +1,17 @@
 local ls = require("luasnip")
 
-require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets/" })
+require("luasnip.loaders.from_lua").lazy_load({
+	paths = "~/.config/nvim/snippets/",
+})
+
+-- extend from some pre-confs (TODO)
+--[[ ls.filetype_extend("Python") ]]
+-- ls.filetype_extend("HTML")
+-- ls.filetype_extend("Javascript")
+-- ls.filetype_extend("Typescript")
+-- ls.filetype_extend("Javascriptreact")
+-- ls.filetype_extend("Typescriptreact")
+-- ls.filetype_extend("Markdown")
 
 ls.config.set_config({
 	history = true,
