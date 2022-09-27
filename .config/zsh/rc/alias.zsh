@@ -7,12 +7,14 @@ EXT_SDD_LOC="/run/media/drives/freeNVMe"
 ## Common / general ##
 
 alias nv="nvim"
-alias l="ls -a"
-alias ll="ls -la"
+alias cat="bat"
+alias grep="rg"
+alias l="lsd"
+alias ll="lsd -laS"
+alias lll="lsd -laS --total-size"
+alias tree="lsd --tree"
 alias rm="rm -I --preserve-root"
-alias del='rm -rf'
 alias untar="tar -zxvf $1"
-alias del="rm -rf $1"
 alias kpid="kill -SIGKILL"
 alias gpustats="watch -n 1 nvidia-smi"
 alias aursearch="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro yay -S"
@@ -23,10 +25,12 @@ alias dotconfig="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 
 ## pacman ##
 
-alias pac-update="sudo pacman -Syu --noconfirm"
-alias pac-search="sudo pacman -sS $1"
-alias pac-show-unused="sudo pacman -Qtdq"
-alias pac-clean="sudo pacman -Sc"
+alias pup="sudo pacman -Syu --noconfirm"
+alias pdown="sudo pacman -S $1"
+alias psearch="sudo pacman -sS $1"
+alias pshow-unused="sudo pacman -Qtdq"
+alias pclean="sudo pacman -Sc"
+alias pla="sudo pacman -Q"
 
 ## chmod-ing ##
 
@@ -55,7 +59,7 @@ alias setupk8s="bash ~/.config/scripts/setup/dev_k8s_cluster.sh"
 alias freessd="cd $EXT_SSD_LOC"
 alias maindrive="cd $DOC_SSD_LOC/main"
 
-alias clib="cd $DOC_SSD_LOC/main/Library"
+alias clib="cd $DOC_SSD_LOC/main/GitHub/Library"
 alias prjs="cd $DOC_SSD_LOC/main/Projects"
 alias rndm="cd $DOC_SSD_LOC/main/Random"
 alias docs="cd $DOC_SSD_LOC/main/Documentation"

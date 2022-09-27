@@ -50,15 +50,8 @@ unset __conda_setup
 
 # Custom aliases
 source "$ZSH_CUSTOM_DIR/rc/alias.zsh"
-
-# paths
+source "$ZSH_CUSTOM_DIR/rc/base.zsh"
 source "$ZSH_CUSTOM_DIR/rc/paths.zsh"
 
-# settings
-source "$ZSH_CUSTOM_DIR/rc/settings.zsh"
-
-
-# pnpm
-export PNPM_HOME="/home/jupyter/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+# bun completions
+[ -s "/home/jupyter/.bun/_bun" ] && source "/home/jupyter/.bun/_bun"

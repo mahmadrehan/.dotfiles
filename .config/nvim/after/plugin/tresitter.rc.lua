@@ -1,5 +1,19 @@
 local nnoremap = require("0xahmad.keymap").nnoremap
 
+require("nvim-treesitter.configs").setup({
+	ensure_installed = "all",
+	sync_install = false,
+
+	autotag = {
+		enable = true,
+	},
+
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
+})
+
 function ContextSetup(show_all_context)
 	require("treesitter-context").setup({
 		enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)

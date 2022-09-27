@@ -3,20 +3,18 @@ local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 local vnoremap = Remap.vnoremap
 
-inoremap("jj", "<C-O>i<Right><Esc>")
-inoremap("<C-c>", "<Esc>")
+inoremap("<C-c>", "<C-O>i<Right><Esc>")
+-- inoremap("<jj>", "<C-O>i<Right><Esc>")
 
 nnoremap("<C-s>", ":w<CR>")
 inoremap("<C-s>", "<Esc>:w<CR>")
 vnoremap("<C-s>", ":w<CR>")
 
-nnoremap("<C-w>", ":wq<CR>")
-vnoremap("<C-w>", ":wq<CR>")
 nnoremap("<C-q>", ":q!<CR>")
 vnoremap("<C-q>", ":q!<CR>")
 
-nnoremap("<leader>q", ":bd<CR>")
-vnoremap("<leader>q", ":bd<CR>")
+nnoremap("<leader>q", ":bd!<CR>")
+vnoremap("<leader>q", ":bd!<CR>")
 
 -- for a quick search and replace
 
@@ -34,12 +32,12 @@ vnoremap("<leader>y", '"+y')
 -- telescope rempas
 -- ---
 nnoremap("<leader>find", function()
-	require("telescope.builtin").grep_string({ search = vim.fn.input("What r ya lookin' for sherlock? :: ") })
+	require("telescope.builtin").grep_string({ search = vim.fn.input("Whatchya lookin' for sherlock? :: ") })
 end)
 nnoremap("<C-p>", function()
 	require("telescope.builtin").git_files()
 end)
-nnoremap("<Leader>s", function()
+nnoremap("<Leader>se", function()
 	require("telescope.builtin").find_files()
 end)
 
@@ -49,10 +47,12 @@ end)
 nnoremap("<Leader>vh", function()
 	require("telescope.builtin").help_tags()
 end)
+
 -- local telescope remaps
 nnoremap("<Leader>vrc", function()
 	require("0xahmad.telescope").search_dotfiles()
 end)
+
 nnoremap("<Leader>gc", function()
 	require("0xahmad.telescope").git_branches()
 end)
@@ -60,6 +60,7 @@ end)
 -- ---
 -- bufferline remaps
 -- ---
+
 -- These commands will navigate through buffers in order regardless of which mode you are using
 -- e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
 nnoremap("<S-L>", ":BufferLineCycleNext<CR>")
@@ -85,5 +86,8 @@ nnoremap("J", "mzJ`z")
 -- Move lines
 vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '>-2<CR>gv=gv")
-inoremap("<C-k>", "<esc>:m .-2<CR>==")
-inoremap("<C-j>", "<esc>:m .+1<CR>==")
+inoremap("<A-k>", "<esc>:m .-2<CR>==")
+inoremap("<A-j>", "<esc>:m .+1<CR>==")
+
+-- short for running a command
+nnoremap("<Leader>sh", ":! ")

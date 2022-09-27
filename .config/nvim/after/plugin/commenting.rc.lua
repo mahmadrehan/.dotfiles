@@ -16,9 +16,9 @@ require("Comment").setup({
 	---@type table
 	toggler = {
 		---Line-comment toggle keymap
-		line = "gcc",
+		line = "<C-_>",
 		---Block-comment toggle keymap
-		block = "<C-_>",
+		block = "gcb",
 	},
 
 	---LHS of operator-pending mappings in NORMAL + VISUAL mode
@@ -58,10 +58,8 @@ require("Comment").setup({
 	},
 
 	---Pre-hook, called before commenting the line
-	---@type fun(ctx: CommentCtx):string
 	pre_hook = nil,
 
 	---Post-hook, called after commenting is done
-	---@type fun(ctx: CommentCtx)
 	post_hook = nil,
 })

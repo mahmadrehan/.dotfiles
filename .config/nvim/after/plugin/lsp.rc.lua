@@ -1,3 +1,25 @@
+local lspsaga = require("lspsaga")
+-- this dude also gives the bulbs
+lspsaga.init_lsp_saga({
+	server_filetype_map = {},
+	code_action_lightbulb = {
+		enable = false,
+		enable_in_insert = false,
+		cache_code_action = true,
+		sign = true,
+		update_time = 150,
+		sign_priority = 20,
+		virtual_text = true,
+	},
+	symbol_in_winbar = {
+		in_custom = false,
+		enable = false,
+		separator = " ",
+		show_file = true,
+		click_support = false,
+	},
+})
+
 Remap = require("0xahmad.keymap")
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
@@ -19,25 +41,43 @@ local function config(_config)
 		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 
 		on_attach = function(client, _)
-			nnoremap("<leader>gd", function() vim.lsp.buf.definition() end)
-			nnoremap("K", function() vim.lsp.buf.hover() end)
-			nnoremap("<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
-			nnoremap("<leader>vd", function() vim.diagnostic.open_float() end)
-			nnoremap("[d", function() vim.diagnostic.goto_next() end)
-			nnoremap("]d", function() vim.diagnostic.goto_prev() end)
-			nnoremap("<leader>vca", function() vim.lsp.buf.code_action() end)
-			nnoremap("<leader>vrr", function() vim.lsp.buf.references() end)
-			nnoremap("<leader>vrn", function() vim.lsp.buf.rename() end)
-			inoremap("<C-h>", function() vim.lsp.buf.signature_help() end)
+			nnoremap("K", function()
+				vim.cmd("Lspsaga hover_doc")
+			end)
+			nnoremap("<leader>gd", function()
+				vim.cmd("Lspsaga lsp_finder")
+			end)
+			nnoremap("<leader>gr", function()
+				vim.cmd("Lspsaga rename")
+			end)
+			nnoremap("<leader>gp", function()
+				vim.cmd("Lspsaga peek_definition")
+			end)
+			nnoremap("]d", function()
+				vim.cmd("Lspsaga diagnostic_jump_next")
+			end)
+			nnoremap("[d", function()
+				vim.cmd("Lspsaga diagnostic_jump_prev")
+			end)
+			nnoremap("<leader>vca", function()
+				vim.cmd("Lspsaga code_action")
+			end)
+			nnoremap("<leader>vws", function()
+				vim.lsp.buf.workspace_symbol()
+			end)
+
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 			-- these use null-ls for formatting
-			if has_value({
-				"tsserver",
-				"rust_analyzer",
-				"sumneko_lua",
-				"html",
-			}, client.name) then
+			if
+				has_value({
+					"tsserver",
+					"rust_analyzer",
+					"sumneko_lua",
+					"html",
+					"zls",
+				}, client.name)
+			then
 				client.resolved_capabilities.document_formatting = false
 			end
 
@@ -49,18 +89,13 @@ local function config(_config)
 end
 
 -- Dart
-
 require("lspconfig").dartls.setup(config())
 -- require("flutter-tools").setup(config())
-
 -- python
-
 require("lspconfig").pyright.setup(config())
-
 require("lspconfig").jedi_language_server.setup(config())
 
 -- JS/TS
-
 require("lspconfig").tsserver.setup(config())
 
 local nls = require("null-ls")
@@ -71,20 +106,27 @@ nls.setup(config({
 		-- lua
 		nlsb.formatting.stylua,
 		-- js/ts
-		nlsb.formatting.prettier_d_slim,
-		--nlsb.diagnostics.eslint,
+		nlsb.formatting.prettierd,
 		nlsb.diagnostics.tsc,
 		-- rust
 		nlsb.formatting.rustfmt,
-		--dart
-		--nlsb.formatting.dart_format,
+		-- for zig
+		nlsb.formatting.zigfmt,
+		-- for markdown
+		nlsb.formatting.markdownlint,
+		nlsb.diagnostics.markdownlint,
+		-- python
+		-- for shell scripts
+		nlsb.formatting.shfmt,
+		-- for sql scripts
+		nlsb.formatting.sqlfluff.with({
+			extra_args = { "--dialect", "postgres" },
+		}),
 	},
 }))
 
 require("lspconfig").svelte.setup(config())
-
 -- GoLang
-
 require("lspconfig").gopls.setup(config({
 	cmd = { "gopls", "serve" },
 	settings = {
@@ -96,9 +138,7 @@ require("lspconfig").gopls.setup(config({
 		},
 	},
 }))
-
 -- Lua
-
 require("lspconfig").sumneko_lua.setup(config({
 	-- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
@@ -123,11 +163,8 @@ require("lspconfig").sumneko_lua.setup(config({
 		},
 	},
 }))
-
 -- who even uses this?
-
 require("lspconfig").rust_analyzer.setup(config({
-	-- cmd = { "rustup", "run", "nightly", "rust-analyzer" },
 	settings = {
 		["rust-analyzer"] = {
 			assist = {
@@ -145,20 +182,19 @@ require("lspconfig").rust_analyzer.setup(config({
 	},
 }))
 
--- c/c++
-
-require("lspconfig").ccls.setup(config())
-
--- html/css ls
-
+-- java does not work yet........ (-_-)
+require("lspconfig").jdtls.setup(config())
+--------------------------------------------
+require("lspconfig").ccls.setup(config()) -- c/cpp
+require("lspconfig").zls.setup(config())
+require("lspconfig").solang.setup(config())
+-- frontend focused
 require("lspconfig").html.setup(config())
 require("lspconfig").cssls.setup(config())
 require("lspconfig").cssmodules_ls.setup(config())
-
--- ansible ls
-
+require("lspconfig").tailwindcss.setup(config())
+-- other
+require("lspconfig").graphql.setup(config())
+require("lspconfig").bashls.setup(config())
+require("lspconfig").dockerls.setup(config())
 require("lspconfig").ansiblels.setup(config())
-
--- other LSs
-
-require("lspconfig").solang.setup(config())

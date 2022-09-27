@@ -173,13 +173,13 @@ require("neo-tree").setup({
 			event = "file_opened",
 			handler = function(file_path)
 				require("neo-tree").close_all()
-				--require("neo-tree.sources.filesystem").reset_search()
+				-- require("neo-tree.sources.filesystem").reset_search()
 			end,
 		},
 	},
 })
 
 -- NeoTree Keymaps
-vim.keymap.set("n", "<Leader>t", ":NeoTreeRevealToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>t", ":NeoTreeRevealClose<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })

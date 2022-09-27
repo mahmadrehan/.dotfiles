@@ -1,9 +1,8 @@
-
 # Some base config lies here
 
 ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
-plugins=(git)
+plugins=( git zsh-z )
 
 ## what the hek is this? I really don't know lulz
 
@@ -31,4 +30,6 @@ unset __conda_setup
 
 # some shell envs vars
 export DOCKER_BUILDKIT=1
+export PNPM_HOME="/home/jupyter/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
