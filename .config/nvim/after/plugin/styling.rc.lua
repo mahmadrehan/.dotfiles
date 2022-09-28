@@ -1,12 +1,11 @@
-require("bufferline").setup({
-	options = {
-		buffer_close_icon = "",
-		modified_icon = "",
-		diagnostics = true,
-
-		offsets = { { filetype = "NeoTree", text = "", padding = 1 } },
-	},
-})
+-- require("bufferline").setup({
+-- 	options = {
+-- 		buffer_close_icon = "",
+-- 		modified_icon = "",
+-- 		diagnostics = true,
+-- 		offsets = { { filetype = "NeoTree", text = "", padding = 1 } },
+-- 	},
+-- })
 
 -- setting some colors
 vim.cmd([[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]])
