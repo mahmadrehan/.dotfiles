@@ -32,4 +32,5 @@ unset __conda_setup
 export DOCKER_BUILDKIT=1
 export PNPM_HOME="/home/jupyter/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+export ANSIBLE_SCRIPT_DIR="/run/media/drives/documentSSD/main/Scripts/ansible"
 

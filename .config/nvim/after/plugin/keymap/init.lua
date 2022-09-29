@@ -8,10 +8,8 @@ inoremap("<C-c>", "<C-O>i<Right><Esc>")
 
 nnoremap("<C-s>", ":w<CR>")
 inoremap("<C-s>", "<Esc>:w<CR>")
-vnoremap("<C-s>", ":w<CR>")
 
-nnoremap("<C-q>", ":q!<CR>")
-vnoremap("<C-q>", ":q!<CR>")
+nnoremap("<C-q>", ":wqa<CR>")
 
 nnoremap("<leader>q", ":bd!<CR>")
 vnoremap("<leader>q", ":bd!<CR>")
