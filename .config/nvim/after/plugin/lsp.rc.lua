@@ -22,7 +22,6 @@ lspsaga.init_lsp_saga({
 
 Remap = require("0xahmad.keymap")
 local nnoremap = Remap.nnoremap
-local inoremap = Remap.inoremap
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -67,23 +66,11 @@ local function config(_config)
 			end)
 
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-			-- these use null-ls for formatting
-			if
-				has_value({
-					"tsserver",
-					"rust_analyzer",
-					"sumneko_lua",
-					"html",
-					"zls",
-				}, client.name)
-			then
-				client.resolved_capabilities.document_formatting = false
+			local is_async = "false"
+			if has_value({ "pyright" }, client.name) then
+				is_async = "true"
 			end
-
-			if client.resolved_capabilities.document_formatting then
-				vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
-			end
+			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = " .. is_async .. "})")
 		end,
 	}, _config or {})
 end
@@ -96,17 +83,22 @@ require("lspconfig").pyright.setup(config())
 require("lspconfig").jedi_language_server.setup(config())
 
 -- JS/TS
-require("lspconfig").tsserver.setup(config())
+require("lspconfig").tsserver.setup(config({
+	-- root_dir = require("lspconfig.util").root_pattern(".git"),
+}))
 
 local nls = require("null-ls")
 local nlsb = require("null-ls").builtins
 
 nls.setup(config({
 	sources = {
+		-- go
+		nlsb.formatting.gofmt,
 		-- lua
 		nlsb.formatting.stylua,
 		-- js/ts
 		nlsb.formatting.prettierd,
+		nlsb.diagnostics.eslint_d,
 		nlsb.diagnostics.tsc,
 		-- rust
 		nlsb.formatting.rustfmt,
@@ -114,8 +106,9 @@ nls.setup(config({
 		nlsb.formatting.zigfmt,
 		-- for markdown
 		nlsb.formatting.markdownlint,
-		nlsb.diagnostics.markdownlint,
+		-- nlsb.diagnostics.markdownlint, -- this one was becoming a pain to manage
 		-- python
+		nlsb.formatting.black,
 		-- for shell scripts
 		nlsb.formatting.shfmt,
 		-- for sql scripts
@@ -129,12 +122,17 @@ require("lspconfig").svelte.setup(config())
 -- GoLang
 require("lspconfig").gopls.setup(config({
 	cmd = { "gopls", "serve" },
+	filetypes = { "go", "gomod" },
 	settings = {
 		gopls = {
 			analyses = {
 				unusedparams = true,
 			},
 			staticcheck = true,
+			gofumpt = true,
+			codelenses = {
+				gc_details = true,
+			},
 		},
 	},
 }))
@@ -191,7 +189,6 @@ require("lspconfig").solang.setup(config())
 -- frontend focused
 require("lspconfig").html.setup(config())
 require("lspconfig").cssls.setup(config())
-require("lspconfig").cssmodules_ls.setup(config())
 require("lspconfig").tailwindcss.setup(config())
 -- other
 require("lspconfig").graphql.setup(config())

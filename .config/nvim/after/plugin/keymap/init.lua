@@ -4,7 +4,6 @@ local inoremap = Remap.inoremap
 local vnoremap = Remap.vnoremap
 
 inoremap("<C-c>", "<C-O>i<Right><Esc>")
--- inoremap("<jj>", "<C-O>i<Right><Esc>")
 
 nnoremap("<C-s>", ":w<CR>")
 inoremap("<C-s>", "<Esc>:w<CR>")
@@ -18,23 +17,24 @@ vnoremap("<leader>q", ":bd!<CR>")
 
 nnoremap("<leader>fr", ":%s/")
 
--- for sourcing a file to nvim
-
-nnoremap("<leader>this", ":so %<CR>")
-
 -- for setting the clipboard to global
 nnoremap("<leader>y", '"+y')
 vnoremap("<leader>y", '"+y')
 
+-- for sourcing a file to nvim
+nnoremap("<leader>this", ":so %<CR>")
+
 -- ---
 -- telescope rempas
 -- ---
-nnoremap("<leader>find", function()
-	require("telescope.builtin").grep_string({ search = vim.fn.input("Whatchya lookin' for sherlock? :: ") })
-end)
+
+nnoremap("<leader>find", ":Telescope live_grep<CR>")
+nnoremap("<leader>cl", ":Telescope neoclip<CR>")
+
 nnoremap("<C-p>", function()
 	require("telescope.builtin").git_files()
 end)
+
 nnoremap("<Leader>se", function()
 	require("telescope.builtin").find_files()
 end)
@@ -42,17 +42,28 @@ end)
 nnoremap("<Leader>pb", function()
 	require("telescope.builtin").buffers()
 end)
+
 nnoremap("<Leader>vh", function()
 	require("telescope.builtin").help_tags()
 end)
 
 -- local telescope remaps
-nnoremap("<Leader>vrc", function()
-	require("0xahmad.telescope").search_dotfiles()
+nnoremap("<Leader>sdf", function()
+	require("telescope.builtin").find_files({
+		prompt_title = "< VimRC >",
+		cwd = "~/.config/nvim/",
+	})
 end)
 
 nnoremap("<Leader>gc", function()
-	require("0xahmad.telescope").git_branches()
+	local actions = require("telescope.actions")
+	require("telescope.builtin").git_branches({
+		attach_mappings = function(_prompt_bufnr, map)
+			map("i", "<c-d>", actions.git_delete_branch)
+			map("n", "<c-d>", actions.git_delete_branch)
+			return true
+		end,
+	})
 end)
 
 -- ---
@@ -82,6 +93,3 @@ vnoremap("J", ":m '>+1<CR>gv=gv")
 vnoremap("K", ":m '>-2<CR>gv=gv")
 inoremap("<A-k>", "<esc>:m .-2<CR>==")
 inoremap("<A-j>", "<esc>:m .+1<CR>==")
-
--- short for running a command
-nnoremap("<Leader>sh", ":! ")

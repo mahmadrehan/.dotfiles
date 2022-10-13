@@ -6,7 +6,15 @@ require("telescope").setup({
 		-- prompt_prefix = "  ",
 		prompt_prefix = "   ",
 		color_devicons = true,
-
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+		},
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -28,23 +36,4 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("harpoon")
-
-local M = {}
-M.search_dotfiles = function()
-	require("telescope.builtin").find_files({
-		prompt_title = "< VimRC >",
-		cwd = "~/.config/nvim/",
-	})
-end
-
-M.git_branches = function()
-	require("telescope.builtin").git_branches({
-		attach_mappings = function(prompt_bufnr, map)
-			map("i", "<c-d>", actions.git_delete_branch)
-			map("n", "<c-d>", actions.git_delete_branch)
-			return true
-		end,
-	})
-end
-
-return M
+require("telescope").load_extension("neoclip")

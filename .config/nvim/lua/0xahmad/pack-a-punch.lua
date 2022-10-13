@@ -14,36 +14,64 @@ packer.init({
 
 return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
-	-- base lsp stuff
+
+	-- for performance reasons
+	use("lewis6991/impatient.nvim")
+
+	-- base required stuff
 	use("neovim/nvim-lspconfig")
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
+
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
+	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+
 	use("glepnir/lspsaga.nvim")
 	use("onsails/lspkind-nvim")
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+	use("folke/which-key.nvim")
+
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
+
 	use("nvim-lua/plenary.nvim")
+
 	-- use("Pocco81/DAPInstall.nvim")
 	use("mfussenegger/nvim-dap")
+
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
+
 	-- Nvim Tree Shitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
+
+	use("simrat39/symbols-outline.nvim")
+
 	-- for somewhat global formatting, linting etc.
 	use("jose-elias-alvarez/null-ls.nvim")
-	-- HARPOON MAN
+
+	-- Harpoon man
 	use("ThePrimeagen/harpoon")
+
+	-- for playing sherlock with the code
+	use("nvim-telescope/telescope.nvim")
+	use("nvim-telescope/telescope-fzy-native.nvim")
+	use("nvim-telescope/telescope-dap.nvim")
+	use("sharkdp/fd")
+
+	use("mbbill/undotree")
 
 	--
 	-- ** Language specific ** --
 	--
 	-- Lua
 	use("nvim-lua/lsp_extensions.nvim")
+	use("folke/lua-dev.nvim") -- for giving completions for the nvim lua api
 	-- Emmet HTML/JSX
 	use({ "mattn/emmet-vim", ft = { "html", "jsx", "tsx", "rust" } })
 	use({ "alvan/vim-closetag", ft = { "html", "jsx", "tsx", "rust" } })
@@ -65,8 +93,9 @@ return packer.startup(function(use)
 	-- For Visulaizing Vim Marks
 	use("kshenoy/vim-signature")
 
-	-- for quicker commenting
+	-- commenting
 	use("numToStr/Comment.nvim")
+	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "windwp/nvim-autopairs" })
@@ -85,14 +114,14 @@ return packer.startup(function(use)
 	})
 
 	-- directory tree stuff
-	use("nvim-neo-tree/neo-tree.nvim")
 	use("MunifTanjim/nui.nvim")
-
-	-- for playing sherlock with the code
-	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-fzy-native.nvim")
-	use("nvim-telescope/telescope-dap.nvim")
-	use("sharkdp/fd")
+	use("nvim-neo-tree/neo-tree.nvim")
+	use({
+		"AckslD/nvim-neoclip.lua",
+		requires = {
+			{ "kkharji/sqlite.lua", module = "sqlite" },
+		},
+	})
 
 	-- -------------------------------
 	-- Giving some urgonomiks / flashiness
@@ -100,7 +129,7 @@ return packer.startup(function(use)
 
 	use("norcalli/nvim-colorizer.lua")
 	use("lukas-reineke/indent-blankline.nvim")
-	use("EdenEast/nightfox.nvim")
+	-- use("EdenEast/nightfox.nvim")
 	use("ellisonleao/gruvbox.nvim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
 	use("mvllow/modes.nvim")

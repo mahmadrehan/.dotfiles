@@ -67,6 +67,6 @@ alias github="cd $DOC_SSD_LOC/main/GitHub"
 
 ## for navigating to config dirs ##
 
-alias nvimconf="cd ~/.config/nvim"
-alias zconf="cd ~/.config/zsh"
+alias nvimconf="cd ~/.config/nvim && nv ."
+alias zconf="cd ~/.config/zsh && nv ."
 alias termconf="cd ~/.config/alacritty"

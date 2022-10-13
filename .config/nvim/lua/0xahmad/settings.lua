@@ -10,7 +10,7 @@ vim.opt.cindent = true
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 24
@@ -31,12 +31,13 @@ vim.opt.backspace = { "indent", "eol", "start" }
 
 vim.opt.cmdheight = 1
 vim.opt.updatetime = 50
+vim.opt.timeoutlen = 500
 vim.opt.scrolloff = 8
 vim.opt.showmode = false
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.signcolumn = "yes"
 
-vim.opt.colorcolumn = "86"
+-- vim.opt.colorcolumn = "86"
 
 vim.opt.encoding = "utf-8"
 
@@ -48,6 +49,6 @@ vim.g.transparent_enabled = true
 vim.g.mapleader = " "
 
 vim.opt.termguicolors = true
-vim.cmd("set t_Co=256")
-
 vim.opt.guicursor = ""
+
+vim.cmd("set t_Co=256")

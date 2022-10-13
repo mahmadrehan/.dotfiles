@@ -17,10 +17,6 @@ local source_mapping = {
 }
 
 cmp.setup({
-	experimental = {
-		ghost_text = true,
-	},
-
 	mapping = {
 		["<Up>"] = cmp.mapping.scroll_docs(-4),
 		["<Down>"] = cmp.mapping.scroll_docs(4),
@@ -59,7 +55,21 @@ cmp.setup({
 		end,
 	},
 
-	-- sorting = {
+	window = {
+		completion = {
+			winhighlight = "Normal:None,FloatBorder:None,Search:None",
+			side_padding = 1,
+			border = "rounded",
+		},
+		documentation = {
+			border = "rounded",
+		},
+	},
+
+	experimental = {
+		ghost_text = true,
+	},
+
 	-- 	priority_weight = 2,
 	-- 	comparators = {
 	-- 		require("cmp_tabnine.compare"),

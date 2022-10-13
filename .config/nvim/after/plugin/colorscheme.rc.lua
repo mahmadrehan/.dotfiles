@@ -16,9 +16,10 @@ function TokyoNight()
 			sidebars = "transparent",
 			floats = "transparent",
 		},
-		sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+		sidebars = { "qf", "help", "vista_kind", "terminal", "packer" },
 		day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-		hide_inactive_statusline = false, -- Enabling will hide inactive statuslines n replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+		-- Enabling will hide inactive statuslines n replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+		hide_inactive_statusline = false,
 		dim_inactive = true, -- dims inactive windows
 		lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
 		--- You can override specific color groups to use other groups or a hex color
@@ -97,3 +98,4 @@ function NightFox()
 end
 
 TokyoNight()
+-- GruvBox()

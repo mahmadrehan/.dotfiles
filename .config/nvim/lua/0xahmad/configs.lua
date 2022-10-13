@@ -5,7 +5,7 @@ local yank_group = augroup("HighlightYank", {})
 -- auGroups
 
 PersonalGroup = augroup("0xaf2f6ad", {})
-BlackOnSave = augroup("BOS", {})
+-- BlackOnSave = augroup("BOS", {})
 
 -- Copilot config
 
@@ -51,11 +51,11 @@ if next(vim.fn.argv()) ~= nil and conda_path then
 	vim.g["python3_host_prog"] = conda_path .. "/bin/python"
 end
 
-autocmd({ "BufWritePre" }, {
-	group = BlackOnSave,
-	pattern = "*.py",
-	command = "Black",
-})
+-- autocmd({ "BufWritePre" }, {
+-- 	group = BlackOnSave,
+-- 	pattern = "*.py",
+-- 	command = "Black",
+-- })
 
 -- ---------------------------
 -- - Emmet config

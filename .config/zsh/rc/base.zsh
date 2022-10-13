@@ -1,8 +1,6 @@
 # Some base config lies here
 
 ZSH_THEME="robbyrussell"
-HYPHEN_INSENSITIVE="true"
-plugins=( git zsh-z )
 
 ## what the hek is this? I really don't know lulz
 
@@ -33,4 +31,4 @@ export DOCKER_BUILDKIT=1
 export PNPM_HOME="/home/jupyter/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export ANSIBLE_SCRIPT_DIR="/run/media/drives/documentSSD/main/Scripts/ansible"
-
+export STARSHIP_CACHE="$HOME/.starship/cache"
