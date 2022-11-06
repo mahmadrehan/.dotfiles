@@ -21,7 +21,7 @@ function TokyoNight()
 		-- Enabling will hide inactive statuslines n replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
 		hide_inactive_statusline = false,
 		dim_inactive = true, -- dims inactive windows
-		lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+		cokeline_bold = true, -- When `true`, section headers in the lualine theme will be bold
 		--- You can override specific color groups to use other groups or a hex color
 		--- function will be called with a ColorScheme table
 		---@param colors ColorScheme

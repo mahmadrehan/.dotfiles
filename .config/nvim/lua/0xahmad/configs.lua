@@ -16,6 +16,13 @@ PersonalGroup = augroup("0xaf2f6ad", {})
 ---    other configs
 -----------------------------
 
+-- TODO: enable spell checking only for markdown files
+-- autocmd("MarkdownSpellChecking", {
+-- 	group = PersonalGroup,
+-- 	filetype = "markdown",
+-- 	command = "setlocal spell",
+-- })
+
 autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",

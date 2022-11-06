@@ -36,6 +36,7 @@ vim.opt.scrolloff = 8
 vim.opt.showmode = false
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.signcolumn = "yes"
+-- vim.opt.spell = true
 
 -- vim.opt.colorcolumn = "86"
 

@@ -1,6 +1,16 @@
-local wc = require("which-key")
+local wk = require("which-key")
 
-wc.setup({
+wk.register({}, {
+	mode = "n", -- NORMAL mode
+	-- prefix: use "<leader>f" for example for mapping everything related to finding files
+	-- the prefix is prepended to every mapping part of `mappings`
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = false, -- use `nowait` when creating keymaps
+})
+
+wk.setup({
 	plugins = {
 		marks = true, -- shows a list of your marks on ' and `
 		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -50,18 +60,17 @@ wc.setup({
 		height = { min = 4, max = 25 }, -- min and max height of the columns
 		width = { min = 20, max = 50 }, -- min and max width of the columns
 		spacing = 3, -- spacing between columns
-		align = "left", -- align columns left, center or right
+		align = "center", -- align columns left, center or right
 	},
 	ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
 	hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
 	show_help = true, -- show help message on the command line when the popup is visible
 	triggers = "auto", -- automatically setup triggers
-	-- triggers = {"<leader>"} -- or specify a list manually
 	triggers_blacklist = {
 		-- list of mode / prefixes that should never be hooked by WhichKey
 		-- this is mostly relevant for key maps that start with a native binding
 		-- most people should not need to change this
-		i = { "j", "k", "<Leader>" },
+		i = { "j", "k" },
 		v = { "j", "k" },
 	},
 	-- disable the WhichKey popup for certain buf types and file types.

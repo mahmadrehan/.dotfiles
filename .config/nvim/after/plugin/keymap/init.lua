@@ -28,7 +28,7 @@ nnoremap("<leader>this", ":so %<CR>")
 -- telescope rempas
 -- ---
 
-nnoremap("<leader>find", ":Telescope live_grep<CR>")
+nnoremap("<leader>fd", ":Telescope live_grep<CR>")
 nnoremap("<leader>cl", ":Telescope neoclip<CR>")
 
 nnoremap("<C-p>", function()
@@ -65,19 +65,6 @@ nnoremap("<Leader>gc", function()
 		end,
 	})
 end)
-
--- ---
--- bufferline remaps
--- ---
-
--- These commands will navigate through buffers in order regardless of which mode you are using
--- e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
--- nnoremap("<S-L>", ":BufferLineCycleNext<CR>")
--- nnoremap("<S-H>", ":BufferLineCyclePrev<CR>")
-
--- These commands will move the current buffer backwards or forwards in the bufferline
--- nnoremap("<Leader>nx", ":BufferLineMoveNext<CR>")
--- nnoremap("<Leader>nz", ":BufferLineMovePrev<CR>")
 
 -- Other remaps
 nnoremap("Y", "y$")

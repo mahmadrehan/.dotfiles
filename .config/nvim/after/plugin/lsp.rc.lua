@@ -37,7 +37,7 @@ end
 
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 
 		on_attach = function(client, _)
 			nnoremap("K", function()
@@ -92,6 +92,8 @@ local nlsb = require("null-ls").builtins
 
 nls.setup(config({
 	sources = {
+		-- cpp
+		nlsb.diagnostics.cpplint,
 		-- go
 		nlsb.formatting.gofmt,
 		-- lua
@@ -109,6 +111,7 @@ nls.setup(config({
 		-- nlsb.diagnostics.markdownlint, -- this one was becoming a pain to manage
 		-- python
 		nlsb.formatting.black,
+		-- nlsb.formatting.djlint,
 		-- for shell scripts
 		nlsb.formatting.shfmt,
 		-- for sql scripts

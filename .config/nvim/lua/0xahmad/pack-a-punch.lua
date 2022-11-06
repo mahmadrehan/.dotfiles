@@ -25,9 +25,9 @@ return packer.startup(function(use)
 
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
+
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 	use("glepnir/lspsaga.nvim")
@@ -57,6 +57,8 @@ return packer.startup(function(use)
 
 	-- Harpoon man
 	use("ThePrimeagen/harpoon")
+	-- VSCode habits die hard...
+	use({ "noib3/cokeline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- for playing sherlock with the code
 	use("nvim-telescope/telescope.nvim")
@@ -74,10 +76,8 @@ return packer.startup(function(use)
 	use("folke/lua-dev.nvim") -- for giving completions for the nvim lua api
 	-- Emmet HTML/JSX
 	use({ "mattn/emmet-vim", ft = { "html", "jsx", "tsx", "rust" } })
-	use({ "alvan/vim-closetag", ft = { "html", "jsx", "tsx", "rust" } })
 	-- TypeScript
 	use({ "jose-elias-alvarez/nvim-lsp-ts-utils", ft = { "ts", "js" } })
-	-- use({ "MunifTanjim/prettier.nvim" })
 	-- Prisma / TS
 	use({ "pantharshit00/vim-prisma", ft = { "prisma", "ts", "js" } })
 	-- Dart / Flutter
@@ -103,7 +103,6 @@ return packer.startup(function(use)
 	-- better syntax support
 	use("sheerun/vim-polyglot")
 
-	-- statusbar madness
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },

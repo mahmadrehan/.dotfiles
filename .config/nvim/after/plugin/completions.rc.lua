@@ -6,31 +6,28 @@ local s = "> "
 local source_mapping = {
 	nvim_lsp = s .. "LSP",
 	nvim_lua = s .. "Lua",
-	pyright = s .. "Piethon",
-	tsserver = s .. "TeeJS",
-	rust_analyzer = s .. "Rusty",
-	gopls = s .. "Go",
 	cmp_tabnine = s .. "Prime9",
 	path = s .. "Path",
+	cmp_path = s .. "Path",
 	luasnip = s .. "LuaSnip",
-	buffer = s .. "Buffer",
+}
+
+local mappings = {
+	["<Up>"] = cmp.mapping.scroll_docs(-4),
+	["<Down>"] = cmp.mapping.scroll_docs(4),
+	["<C-D>"] = cmp.mapping.select_prev_item(),
+	["<C-F>"] = cmp.mapping.select_next_item(),
+	["<C-Space>"] = cmp.mapping.complete(),
+	["<CR>"] = cmp.mapping.confirm({ select = true }),
 }
 
 cmp.setup({
-	mapping = {
-		["<Up>"] = cmp.mapping.scroll_docs(-4),
-		["<Down>"] = cmp.mapping.scroll_docs(4),
-		["<C-D>"] = cmp.mapping.select_prev_item(),
-		["<C-F>"] = cmp.mapping.select_next_item(),
-		["<C-Space>"] = cmp.mapping.complete(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	},
-
+	mapping = mappings,
 	sources = {
-		{ name = "cmp_tabnine" },
 		{ name = "luasnip", option = { use_show_condition = false } },
+		{ name = "cmp_tabnine" },
 		{ name = "nvim_lsp" },
-		{ name = "buffer", keyword_length = 4 },
+		{ name = "path", option = { trailing_slash = true } },
 	},
 
 	snippet = {
@@ -69,20 +66,22 @@ cmp.setup({
 	experimental = {
 		ghost_text = true,
 	},
+})
 
-	-- 	priority_weight = 2,
-	-- 	comparators = {
-	-- 		require("cmp_tabnine.compare"),
-	-- 		compare.offset,
-	-- 		compare.exact,
-	-- 		compare.score,
-	-- 		compare.recently_used,
-	-- 		compare.kind,
-	-- 		compare.sort_text,
-	-- 		compare.length,
-	-- 		compare.order,
-	-- 	},
-	-- },
+-- for commandline completions
+
+cmp.setup.cmdline(":", {
+	mapping = mappings,
+	sources = {
+		{ name = "cmdline" },
+	},
+})
+
+cmp.setup.cmdline("/", {
+	mapping = mappings,
+	sources = {
+		{ name = "cmdline" },
+	},
 })
 
 -- AUTO PAIRS & TAGS
