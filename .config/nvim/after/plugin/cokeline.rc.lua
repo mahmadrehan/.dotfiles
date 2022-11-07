@@ -1,30 +1,72 @@
-local cline = require("cokeline")
+local ok, cline = pcall(require, "cokeline")
 local get_hex = require("cokeline/utils").get_hex
 local Remap = require("0xahmad.keymap")
 local nnoremap = Remap.nnoremap
-local str_rep = string.rep
 
-if not cline then
+if not ok then
 	return
 end
 
-local yellow = vim.g.terminal_color_3
-local modified_clr = "#3ddc84"
+local modified_clr = "#73daa1"
+local error_clr = "#f7768e"
+local warning_clr = "#e0af68"
+local primary_clr_1 = "#9aa5ce"
+local focused_clr_1 = "#7aa2f7"
+local primary_dark_1 = "#1c2437"
+local background_dark_1 = "#1a1b26"
 
-local comments_fg = get_hex("Comment", "fg")
-local errors_fg = get_hex("DiagnosticError", "fg")
-local warnings_fg = get_hex("DiagnosticWarn", "fg")
-local text_clr = "#6379a9"
+local buffer_width = 32
 
-local buffer_width = 28
+local get_clr = function(buffer, default_value)
+	if buffer.diagnostics.errors ~= 0 then
+		return error_clr
+	end
+	if buffer.diagnostics.warnings ~= 0 then
+		if buffer.is_focused then
+			return warning_clr
+		end
+	end
+	if buffer.is_modified then
+		return modified_clr
+	end
+	if buffer.is_focused then
+		return focused_clr_1
+	end
+	return default_value
+end
 
-local fg_clr = "#1c2437"
-local bg_clr = "#181b26"
+local get_text_clr = function(buffer, f_value, s_value)
+	--[[
+	the text should be dark when there is focuse on the bufferline,
+	and f/s color when the buffer is not in focus,
+
+	exception: I don't want the warning to be screaming at me all the time,
+		so with these checks, if there's a warning and the buffer is not in
+		focus, then the text get's the warning color instead of the background
+	--]]
+	f_value = f_value or primary_clr_1
+	s_value = s_value or background_dark_1
+	local is_bg_not_getting_color = not get_clr(buffer)
+	local is_warning_and_not_focused = buffer.diagnostics.warnings ~= 0 and not buffer.is_focused
+	if is_bg_not_getting_color then
+		if is_warning_and_not_focused then
+			return warning_clr
+		end
+		return f_value
+	else
+		return s_value
+	end
+end
 
 local components = {
 	separator = {
 		text = " ",
-		bg = bg_clr,
+		bg = function(buffer)
+			if buffer.index ~= 1 then
+				return background_dark_1
+			end
+			return get_clr(buffer, background_dark_1)
+		end,
 		truncation = { priority = 1 },
 	},
 
@@ -32,18 +74,31 @@ local components = {
 		text = " ",
 		truncation = { priority = 1 },
 	},
-
 	left_half_circle = {
-		text = "",
-		fg = fg_clr,
-		bg = bg_clr,
+		text = function(buffer)
+			if buffer.index ~= 1 then
+				return " "
+			end
+			return ""
+		end,
+		fg = function(buffer)
+			if buffer.index ~= 1 then
+				return background_dark_1
+			end
+			return get_clr(buffer, background_dark_1)
+		end,
+		bg = function(buffer)
+			return get_clr(buffer, primary_dark_1)
+		end,
 		truncation = { priority = 1 },
 	},
 
 	right_half_circle = {
-		text = "",
-		fg = fg_clr,
-		bg = bg_clr,
+		text = "",
+		fg = function(buffer)
+			return get_clr(buffer, primary_dark_1)
+		end,
+		bg = background_dark_1,
 		truncation = { priority = 1 },
 	},
 
@@ -52,20 +107,16 @@ local components = {
 			return buffer.devicon.icon
 		end,
 		fg = function(buffer)
-			return buffer.devicon.color
+			return get_text_clr(buffer, buffer.devicon.color)
 		end,
 		truncation = { priority = 1 },
 	},
-
 	index = {
 		text = function(buffer)
-			return buffer.index .. ": "
-			-- return "  "
+			return buffer.index .. " "
 		end,
 		fg = function(buffer)
-			return (buffer.diagnostics.errors ~= 0 and errors_fg)
-				or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-				or text_clr
+			return get_text_clr(buffer)
 		end,
 		truncation = { priority = 1 },
 	},
@@ -74,7 +125,9 @@ local components = {
 		text = function(buffer)
 			return buffer.unique_prefix
 		end,
-		fg = comments_fg,
+		fg = function(buffer)
+			return get_text_clr(buffer)
+		end,
 		style = "italic",
 		truncation = {
 			priority = 3,
@@ -87,15 +140,10 @@ local components = {
 			return buffer.filename
 		end,
 		fg = function(buffer)
-			return (buffer.diagnostics.errors ~= 0 and errors_fg)
-				or (buffer.diagnostics.warnings ~= 0 and warnings_fg)
-				or nil
+			return get_text_clr(buffer)
 		end,
 		style = function(buffer)
-			return ((buffer.is_focused and buffer.diagnostics.errors ~= 0) and "bold,underline")
-				or (buffer.is_focused and "bold,underline")
-				or (buffer.diagnostics.errors ~= 0 and "underline")
-				or nil
+			return (buffer.is_focused and "bold,underline") or (buffer.diagnostics.errors ~= 0 and "underline") or nil
 		end,
 		truncation = {
 			priority = 2,
@@ -108,45 +156,16 @@ local components = {
 			return buffer.is_modified and "  " or "  "
 		end,
 		fg = function(buffer)
-			return buffer.is_modified and modified_clr or nil
+			return get_text_clr(buffer)
 		end,
 		delete_buffer_on_left_click = true,
 		truncation = { priority = 1 },
 	},
 }
 
-local get_remaining_space = function(buffer)
-	local used_space = 0
-	for _, component in pairs(components) do
-		used_space = used_space
-			+ vim.fn.strwidth(
-				(type(component.text) == "string" and component.text)
-				or (type(component.text) == "function" and component.text(buffer))
-			)
-	end
-	return math.max(0, buffer_width - used_space)
-end
-
-local left_padding = {
-	text = function(buffer)
-		local remaining_space = get_remaining_space(buffer)
-		-- return str_rep(" ", remaining_space / 2 + remaining_space % 2)
-		return str_rep(" ", remaining_space / 2)
-	end,
-}
-
-local right_padding = {
-	text = function(buffer)
-		local remaining_space = get_remaining_space(buffer)
-		return str_rep(" ", remaining_space / 2)
-	end,
-}
-
 cline.setup({
 	show_if_buffers_are_at_least = 1,
 	buffers = {
-		-- focus_on_delete = "prev",
-		-- new_buffers_position = "last",
 		focus_on_delete = "next",
 		new_buffers_position = "next",
 	},
@@ -156,27 +175,27 @@ cline.setup({
 		fg = function(buffer)
 			return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
 		end,
-		bg = fg_clr,
+		bg = function(buffer)
+			return get_clr(buffer, primary_dark_1)
+		end,
 	},
 	sidebar = {
 		filetype = "Neotree",
 		components = {
 			text = " NeoTree",
-			fg = yellow,
-			bg = get_hex("Neotree", "bg"),
+			fg = warning_clr,
+			bg = background_dark_1,
 			style = "bold",
 		},
 	},
 	components = {
 		components.separator,
 		components.left_half_circle,
-		left_padding,
 		components.devicon,
 		components.index,
 		components.unique_prefix,
 		components.filename,
 		components.space,
-		right_padding,
 		components.close_or_unsaved,
 		components.right_half_circle,
 	},

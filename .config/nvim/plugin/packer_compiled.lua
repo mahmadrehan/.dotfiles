@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["cmp-buffer"] = {
-    loaded = true,
-    path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/cmp-buffer",
-    url = "https://github.com/hrsh7th/cmp-buffer"
-  },
   ["cmp-cmdline"] = {
     loaded = true,
     path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
@@ -113,6 +108,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
+  ["cokeline.nvim"] = {
+    loaded = true,
+    path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/cokeline.nvim",
+    url = "https://github.com/noib3/cokeline.nvim"
   },
   ["dart-vim-plugin"] = {
     loaded = false,
@@ -352,13 +352,6 @@ _G.packer_plugins = {
     path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
-  ["vim-closetag"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/home/jupyter/.local/share/nvim/site/pack/packer/opt/vim-closetag",
-    url = "https://github.com/alvan/vim-closetag"
-  },
   ["vim-polyglot"] = {
     loaded = true,
     path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/vim-polyglot",
@@ -375,11 +368,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/vim-signature",
     url = "https://github.com/kshenoy/vim-signature"
-  },
-  ["which-key.nvim"] = {
-    loaded = true,
-    path = "/home/jupyter/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
@@ -416,14 +404,14 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType jsx ++once lua require("packer.load")({'emmet-vim'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tsx ++once lua require("packer.load")({'emmet-vim'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'emmet-vim'}, { ft = "rust" }, _G.packer_plugins)]]
 vim.cmd [[au FileType dart ++once lua require("packer.load")({'dart-vim-plugin'}, { ft = "dart" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-closetag', 'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-prisma', 'nvim-lsp-ts-utils'}, { ft = "js" }, _G.packer_plugins)]]
-vim.cmd [[au FileType jsx ++once lua require("packer.load")({'vim-closetag', 'emmet-vim'}, { ft = "jsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType prisma ++once lua require("packer.load")({'vim-prisma'}, { ft = "prisma" }, _G.packer_plugins)]]
 vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-prisma', 'nvim-lsp-ts-utils'}, { ft = "ts" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tsx ++once lua require("packer.load")({'vim-closetag', 'emmet-vim'}, { ft = "tsx" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'vim-closetag', 'emmet-vim'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-prisma', 'nvim-lsp-ts-utils'}, { ft = "js" }, _G.packer_plugins)]]
+vim.cmd [[au FileType prisma ++once lua require("packer.load")({'vim-prisma'}, { ft = "prisma" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

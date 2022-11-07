@@ -58,12 +58,6 @@ if next(vim.fn.argv()) ~= nil and conda_path then
 	vim.g["python3_host_prog"] = conda_path .. "/bin/python"
 end
 
--- autocmd({ "BufWritePre" }, {
--- 	group = BlackOnSave,
--- 	pattern = "*.py",
--- 	command = "Black",
--- })
-
 -- ---------------------------
 -- - Emmet config
 -- ---------------------------

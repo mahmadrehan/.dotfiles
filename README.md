@@ -1,6 +1,7 @@
 # .dotfiles
 
-The current configuration files for my current development environment. Updating whenever
-I gradually come to add / configure something
+The dotfiles I use on my development environment, update it whenever I remember
+to after updating something
 
-I use Arch Linux but you can just slip these in any WSL or Linux/Unix distro as you like :]
+I use Linux (Arch btw) but you can just slip these in any WSL or Linux/Unix distro
+and in theory, they should work

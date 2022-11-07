@@ -1,4 +1,10 @@
-require("neo-tree").setup({
+local ok, ntree = pcall(require, "neo-tree")
+
+if not ok then
+	return
+end
+
+ntree.setup({
 	close_if_last_window = true,
 	popup_border_style = "rounded",
 	enable_git_status = true,
@@ -70,15 +76,12 @@ require("neo-tree").setup({
 			["<2-LeftMouse>"] = "open",
 			["<cr>"] = "open",
 			["o"] = "open",
+			["O"] = "close_node",
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
 			["<C-x>"] = "open_split",
 			["<C-v>"] = "open_vsplit",
-			-- ["S"] = "split_with_window_picker",
-			-- ["s"] = "vsplit_with_window_picker",
-			["t"] = "open_tabnew",
 			["w"] = "open_with_window_picker",
-			["C"] = "close_node",
 			["a"] = {
 				"add",
 				-- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -89,10 +92,10 @@ require("neo-tree").setup({
 			["A"] = "add_directory", -- also accepts the config.show_path option.
 			["d"] = "delete",
 			["r"] = "rename",
-			["y"] = "copy_to_clipboard",
+			["c"] = "copy_to_clipboard",
 			["x"] = "cut_to_clipboard",
 			["p"] = "paste_from_clipboard",
-			["c"] = "copy", -- takes text input for destination
+			["y"] = "copy", -- takes text input for destination
 			["m"] = "move", -- takes text input for destination
 			["q"] = "close_window",
 			["R"] = "refresh",
@@ -106,25 +109,14 @@ require("neo-tree").setup({
 			hide_dotfiles = false,
 			hide_gitignored = false,
 			hide_hidden = false, -- only works on Windows for hidden files/directories
-			hide_by_name = {
-				--"node_modules"
-			},
-			hide_by_pattern = { -- uses glob style patterns
-				--"*.meta"
-			},
-			never_show = { -- remains hidden even if visible is toggled to true
-				--".DS_Store",
-				--"thumbs.db"
-			},
+			hide_by_name = {},
+			hide_by_pattern = {},
+			never_show = {},
 		},
-		follow_current_file = true, -- This will find and focus the file in the active buffer every
-		-- time the current file is changed while the tree is open.
+		follow_current_file = true,
 		group_empty_dirs = false, -- when true, empty folders will be grouped together
-		hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
-		-- in whatever position is specified in window.position
-		-- "open_current",  -- netrw disabled, opening a directory opens within the
-		-- window like netrw would, regardless of window.position
-		-- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
+		-- disabled, open_current and something else which gave me a pain in the neck
+		hijack_netrw_behavior = "open_current",
 		use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
 		-- instead of relying on nvim autocmd events.
 		window = {
@@ -167,15 +159,15 @@ require("neo-tree").setup({
 			},
 		},
 	},
-
 	event_handlers = {
-		{
-			event = "file_opened",
-			handler = function(file_path)
-				require("neo-tree").close_all()
-				-- require("neo-tree.sources.filesystem").reset_search()
-			end,
-		},
+		-- {
+		-- 	event = "neo_tree_buffer_enter",
+		-- 	handler = function(file_path)
+		-- 		print(file_path)
+		-- 		require("neo-tree").close_all()
+		-- 		-- require("neo-tree.sources.filesystem").reset_search()
+		-- 	end,
+		-- },
 	},
 })
 

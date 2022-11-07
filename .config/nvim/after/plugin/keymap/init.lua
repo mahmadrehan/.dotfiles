@@ -1,7 +1,9 @@
 local Remap = require("0xahmad.keymap")
+local nmap = Remap.nmap
 local nnoremap = Remap.nnoremap
 local inoremap = Remap.inoremap
 local vnoremap = Remap.vnoremap
+local xnoremap = Remap.xnoremap
 
 inoremap("<C-c>", "<C-O>i<Right><Esc>")
 
@@ -17,9 +19,15 @@ vnoremap("<leader>q", ":bd!<CR>")
 
 nnoremap("<leader>fr", ":%s/")
 
+xnoremap("<leader>p", '"_dP')
+
 -- for setting the clipboard to global
 nnoremap("<leader>y", '"+y')
 vnoremap("<leader>y", '"+y')
+nmap("<leader>Y", '"+Y')
+
+nnoremap("<leader>d", '"_d')
+vnoremap("<leader>d", '"_d')
 
 -- for sourcing a file to nvim
 nnoremap("<leader>this", ":so %<CR>")
@@ -73,10 +81,11 @@ nnoremap("Y", "yg$")
 -- Keep the cursor centered on the following
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
-nnoremap("J", "mzJ`z")
+nnoremap("J", "mzJ`zmz")
 
 -- Move lines
 vnoremap("J", ":m '>+1<CR>gv=gv")
+
 vnoremap("K", ":m '>-2<CR>gv=gv")
 inoremap("<A-k>", "<esc>:m .-2<CR>==")
 inoremap("<A-j>", "<esc>:m .+1<CR>==")

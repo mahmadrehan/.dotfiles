@@ -19,7 +19,10 @@ local function callBrowser(value, browser)
 		cmdBrowser = "firefox-developer-edition"
 	end
 
-	local command = string.format("silent! !%s 'https://google.com/search?q=%s'", cmdBrowser, value)
+	local google_search = "silent! !%s 'https://google.com/search?q=%s'"
+	local brave_search = "silent! !%s 'https://search.brave.com/search?q=%s'"
+
+	local command = string.format(google_search, cmdBrowser, value)
 	vim.api.nvim_command(command)
 end
 

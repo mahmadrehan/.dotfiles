@@ -1,4 +1,5 @@
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = ""
 vim.opt.mouse = "a"
 
 vim.opt.shiftwidth = 4
@@ -38,18 +39,14 @@ vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.signcolumn = "yes"
 -- vim.opt.spell = true
 
--- vim.opt.colorcolumn = "86"
+vim.opt.colorcolumn = "82"
 
 vim.opt.encoding = "utf-8"
 
--- vim.opt.list = true
--- vim.opt.listchars:append("space:⋅")
--- vim.opt.listchars:append("eol:↴")
---
 vim.g.transparent_enabled = true
 vim.g.mapleader = " "
 
 vim.opt.termguicolors = true
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 
 vim.cmd("set t_Co=256")

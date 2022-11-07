@@ -52,7 +52,7 @@ alias activate="conda activate $1"
 alias deactivate="conda deactivate"
 
 alias setupk8s="bash ~/.config/scripts/setup/dev_k8s_cluster.sh"
-alias dup="sudo systemctl start docker && docker kill $(docker ps -q)"
+alias dup="sudo systemctl start docker"
 
 ## for navigating to directories ##
 

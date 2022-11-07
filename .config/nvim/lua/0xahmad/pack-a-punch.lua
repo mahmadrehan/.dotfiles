@@ -32,7 +32,6 @@ return packer.startup(function(use)
 
 	use("glepnir/lspsaga.nvim")
 	use("onsails/lspkind-nvim")
-	use("folke/which-key.nvim")
 
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")

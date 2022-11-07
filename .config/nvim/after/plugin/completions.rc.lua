@@ -71,7 +71,7 @@ cmp.setup({
 -- for commandline completions
 
 cmp.setup.cmdline(":", {
-	mapping = mappings,
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "cmdline" },
 	},
