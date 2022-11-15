@@ -32,6 +32,9 @@ vnoremap("<leader>d", '"_d')
 -- for sourcing a file to nvim
 nnoremap("<leader>this", ":so %<CR>")
 
+-- for opening my file explorer in the opened file/directory
+nnoremap("<leader>fexp", ":! dolphin .<CR>")
+
 -- ---
 -- telescope rempas
 -- ---

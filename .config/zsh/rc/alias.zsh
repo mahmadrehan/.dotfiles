@@ -47,7 +47,9 @@ alias rust="rustc"
 alias pip-update="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 alias dev="./scripts/dev.sh"
-alias cjv="sudo archlinux-java set"
+alias ljv="sudo archlinux-java status"
+alias sjv="sudo archlinux-java set"
+alias listenvs="conda info --envs"
 alias activate="conda activate $1"
 alias deactivate="conda deactivate"
 
@@ -61,7 +63,6 @@ alias gthdd="cd $MAIN_HDD_LOC/data"
 
 alias clib="cd $DOC_SSD_LOC/main/GitHub/Library"
 alias prjs="cd $DOC_SSD_LOC/main/Projects"
-alias prac="cd $DOC_SSD_LOC/main/Practice"
 alias rndm="cd $DOC_SSD_LOC/main/Random"
 alias docs="cd $DOC_SSD_LOC/main/Documentation"
 alias github="cd $DOC_SSD_LOC/main/GitHub"
