@@ -160,6 +160,7 @@ ntree.setup({
 		},
 	},
 	event_handlers = {
+		-- BUG: on file rename, handle that weird file opening up in neotree
 		-- {
 		-- 	event = "neo_tree_buffer_enter",
 		-- 	handler = function(file_path)

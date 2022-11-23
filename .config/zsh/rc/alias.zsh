@@ -55,6 +55,10 @@ alias deactivate="conda deactivate"
 
 alias setupk8s="bash ~/.config/scripts/setup/dev_k8s_cluster.sh"
 alias dup="sudo systemctl start docker"
+alias drmi="Check zconf line 59 for the command"
+# INFO: quick command to filter and remove select
+#       > docker images docker rmi -f $(docker images | grep "fastapi" | awk "{print \$3}")
+
 
 ## for navigating to directories ##
 
@@ -71,4 +75,4 @@ alias github="cd $DOC_SSD_LOC/main/GitHub"
 
 alias nvimconf="cd ~/.config/nvim && nv ."
 alias zconf="cd ~/.config/zsh && nv ."
-alias termconf="cd ~/.config/alacritty"
+alias termconf="cd ~/.config/kitty"

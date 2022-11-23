@@ -13,13 +13,13 @@ packer.init({
 })
 
 return packer.startup(function(use)
-	use("wbthomason/packer.nvim")
+	use({ "wbthomason/packer.nvim" })
 
 	-- for performance reasons
-	use("lewis6991/impatient.nvim")
+	use({ "lewis6991/impatient.nvim" })
 
 	-- base required stuff
-	use("neovim/nvim-lspconfig")
+	use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 
@@ -63,6 +63,7 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
 	use("nvim-telescope/telescope-dap.nvim")
+	use("smartpde/telescope-recent-files")
 	use("sharkdp/fd")
 
 	use("mbbill/undotree")
@@ -111,15 +112,10 @@ return packer.startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 
-	-- directory tree stuff
+	-- for rendering popups n stuff
 	use("MunifTanjim/nui.nvim")
+	-- directory tree stuff
 	use("nvim-neo-tree/neo-tree.nvim")
-	use({
-		"AckslD/nvim-neoclip.lua",
-		requires = {
-			{ "kkharji/sqlite.lua", module = "sqlite" },
-		},
-	})
 
 	-- -------------------------------
 	-- Giving some urgonomiks / flashiness
@@ -127,7 +123,6 @@ return packer.startup(function(use)
 
 	use("norcalli/nvim-colorizer.lua")
 	use("lukas-reineke/indent-blankline.nvim")
-	-- use("EdenEast/nightfox.nvim")
 	use("ellisonleao/gruvbox.nvim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
 	use("mvllow/modes.nvim")

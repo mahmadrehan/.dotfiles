@@ -18,7 +18,7 @@ local mappings = {
 	["<C-D>"] = cmp.mapping.select_prev_item(),
 	["<C-F>"] = cmp.mapping.select_next_item(),
 	["<C-Space>"] = cmp.mapping.complete(),
-	["<CR>"] = cmp.mapping.confirm({ select = true }),
+	["<Tab>"] = cmp.mapping.confirm({ select = true }),
 }
 
 cmp.setup({

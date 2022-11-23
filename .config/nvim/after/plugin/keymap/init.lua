@@ -39,24 +39,29 @@ nnoremap("<leader>fexp", ":! dolphin .<CR>")
 -- telescope rempas
 -- ---
 
+local opts = { silent = true }
+
 nnoremap("<leader>fd", ":Telescope live_grep<CR>")
-nnoremap("<leader>cl", ":Telescope neoclip<CR>")
+
+nnoremap("<leader>jf", function()
+	require("telescope").extensions.recent_files.pick()
+end, opts)
 
 nnoremap("<C-p>", function()
 	require("telescope.builtin").git_files()
-end)
+end, opts)
 
 nnoremap("<Leader>se", function()
 	require("telescope.builtin").find_files()
-end)
+end, opts)
 
 nnoremap("<Leader>pb", function()
 	require("telescope.builtin").buffers()
-end)
+end, opts)
 
 nnoremap("<Leader>vh", function()
 	require("telescope.builtin").help_tags()
-end)
+end, opts)
 
 -- local telescope remaps
 nnoremap("<Leader>sdf", function()
@@ -64,7 +69,7 @@ nnoremap("<Leader>sdf", function()
 		prompt_title = "< VimRC >",
 		cwd = "~/.config/nvim/",
 	})
-end)
+end, opts)
 
 nnoremap("<Leader>gc", function()
 	local actions = require("telescope.actions")
@@ -75,7 +80,7 @@ nnoremap("<Leader>gc", function()
 			return true
 		end,
 	})
-end)
+end, opts)
 
 -- Other remaps
 nnoremap("Y", "y$")

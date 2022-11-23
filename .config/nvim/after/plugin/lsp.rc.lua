@@ -40,30 +40,27 @@ local function config(_config)
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 
 		on_attach = function(client, _)
+			local opts = { silent = true }
 			nnoremap("K", function()
 				vim.cmd("Lspsaga hover_doc")
-			end)
-			nnoremap("<leader>gd", function()
-				vim.cmd("Lspsaga lsp_finder")
-			end)
-			nnoremap("<leader>gr", function()
-				vim.cmd("Lspsaga rename")
-			end)
-			nnoremap("<leader>gp", function()
-				vim.cmd("Lspsaga peek_definition")
-			end)
+			end, opts)
+			nnoremap("<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+			nnoremap("<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
 			nnoremap("]d", function()
 				vim.cmd("Lspsaga diagnostic_jump_next")
-			end)
+			end, opts)
 			nnoremap("[d", function()
 				vim.cmd("Lspsaga diagnostic_jump_prev")
-			end)
-			nnoremap("<leader>vca", function()
+			end, opts)
+			nnoremap("<leader>vrn", function()
+				vim.cmd("Lspsaga rename")
+			end, opts)
+			nnoremap("<leader>ca", function()
 				vim.cmd("Lspsaga code_action")
-			end)
+			end, opts)
 			nnoremap("<leader>vws", function()
 				vim.lsp.buf.workspace_symbol()
-			end)
+			end, opts)
 
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 			local is_async = "false"
@@ -74,18 +71,6 @@ local function config(_config)
 		end,
 	}, _config or {})
 end
-
--- Dart
-require("lspconfig").dartls.setup(config())
--- require("flutter-tools").setup(config())
--- python
-require("lspconfig").pyright.setup(config())
-require("lspconfig").jedi_language_server.setup(config())
-
--- JS/TS
-require("lspconfig").tsserver.setup(config({
-	-- root_dir = require("lspconfig.util").root_pattern(".git"),
-}))
 
 local nls = require("null-ls")
 local nlsb = require("null-ls").builtins
@@ -114,14 +99,16 @@ nls.setup(config({
 		-- nlsb.formatting.djlint,
 		-- for shell scripts
 		nlsb.formatting.shfmt,
-		-- for sql scripts
-		nlsb.formatting.sqlfluff.with({
-			extra_args = { "--dialect", "postgres" },
-		}),
 	},
 }))
 
-require("lspconfig").svelte.setup(config())
+-- Dart
+require("lspconfig").dartls.setup(config())
+-- require("flutter-tools").setup(config())
+-- python
+require("lspconfig").pyright.setup(config())
+require("lspconfig").jedi_language_server.setup(config())
+
 -- GoLang
 require("lspconfig").gopls.setup(config({
 	cmd = { "gopls", "serve" },
@@ -139,13 +126,11 @@ require("lspconfig").gopls.setup(config({
 		},
 	},
 }))
--- Lua
 require("lspconfig").sumneko_lua.setup(config({
-	-- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
 		Lua = {
 			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				-- Tell the language server which version of Lua you're using
 				version = "LuaJIT",
 				-- Setup your lua path
 				path = vim.split(package.path, ";"),
@@ -164,7 +149,6 @@ require("lspconfig").sumneko_lua.setup(config({
 		},
 	},
 }))
--- who even uses this?
 require("lspconfig").rust_analyzer.setup(config({
 	settings = {
 		["rust-analyzer"] = {
@@ -190,11 +174,17 @@ require("lspconfig").ccls.setup(config()) -- c/cpp
 require("lspconfig").zls.setup(config())
 require("lspconfig").solang.setup(config())
 -- frontend focused
+-- JS/TS
+require("lspconfig").tsserver.setup(config({
+	-- root_dir = require("lspconfig.util").root_pattern(".git"),
+}))
 require("lspconfig").html.setup(config())
 require("lspconfig").cssls.setup(config())
 require("lspconfig").tailwindcss.setup(config())
--- other
 require("lspconfig").graphql.setup(config())
+require("lspconfig").svelte.setup(config())
+-- other
+require("lspconfig").sqlls.setup(config())
 require("lspconfig").bashls.setup(config())
 require("lspconfig").dockerls.setup(config())
 require("lspconfig").ansiblels.setup(config())
