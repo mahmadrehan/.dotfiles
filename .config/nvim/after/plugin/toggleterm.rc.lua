@@ -1,5 +1,5 @@
 local tt = require("toggleterm")
-local nnoremap = require("0xahmad.keymap").nnoremap
+local nnoremap = require("user.keymap").nnoremap
 
 tt.setup({
 	direction = "float",

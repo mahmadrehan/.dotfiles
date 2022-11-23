@@ -20,7 +20,7 @@ lspsaga.init_lsp_saga({
 	},
 })
 
-Remap = require("0xahmad.keymap")
+Remap = require("user.keymap")
 local nnoremap = Remap.nnoremap
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

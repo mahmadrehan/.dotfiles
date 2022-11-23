@@ -4,7 +4,7 @@ local yank_group = augroup("HighlightYank", {})
 
 -- auGroups
 
-PersonalGroup = augroup("0xaf2f6ad", {})
+PersonalGroup = augroup("user101", {})
 -- BlackOnSave = augroup("BOS", {})
 
 -- Copilot config

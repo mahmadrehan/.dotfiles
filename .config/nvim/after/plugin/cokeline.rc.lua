@@ -1,6 +1,6 @@
 local ok, cline = pcall(require, "cokeline")
 local get_hex = require("cokeline/utils").get_hex
-local Remap = require("0xahmad.keymap")
+local Remap = require("user.keymap")
 local nnoremap = Remap.nnoremap
 
 if not ok then

@@ -1,4 +1,4 @@
-local nnoremap = require("0xahmad.keymap").nnoremap
+local nnoremap = require("user.keymap").nnoremap
 
 require("gitsigns").setup({
 	-- signs = {
