@@ -1,6 +1,12 @@
 local nnoremap = require("user.keymap").nnoremap
 
-require("gitsigns").setup({
+local ok, gitsigns = pcall(require, "gitsigns")
+
+if not ok then
+	return
+end
+
+gitsigns.setup({
 	-- signs = {
 	-- 	add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 	-- 	change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
@@ -42,7 +48,11 @@ require("gitsigns").setup({
 	-- },
 })
 
-local neogit = require("neogit")
+local ok2, neogit = pcall(require, "neogit")
+
+if not ok2 then
+	return
+end
 
 neogit.setup({
 	disable_signs = false,

@@ -1,5 +1,11 @@
 function TokyoNight()
-	require("tokyonight").setup({
+	local ok, tkn = pcall(require, "tokyonight")
+
+	if not ok then
+		return
+	end
+
+	tkn.setup({
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
 		style = "storm", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
@@ -59,8 +65,14 @@ function GruvBox()
 end
 
 function NightFox()
+	local ok, nfx = pcall(require, "nightfox")
+
+	if not ok then
+		return
+	end
+
 	-- Default options
-	require("nightfox").setup({
+	nfx.setup({
 		options = {
 			-- Compiled file's destination location
 			compile_path = vim.fn.stdpath("cache") .. "/nightfox",

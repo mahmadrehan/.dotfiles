@@ -25,3 +25,6 @@ eval "$(starship init zsh)"
 
 # bun completions
 [ -s "/home/jupyter/.bun/_bun" ] && source "/home/jupyter/.bun/_bun"
+# rust completions
+[ -f ~/.cargo/env ] && source $HOME/.cargo/env
+

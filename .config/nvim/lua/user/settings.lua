@@ -14,7 +14,7 @@ vim.opt.autoindent = true
 vim.opt.wrap = true
 
 vim.opt.foldmethod = "indent"
-vim.opt.foldlevel = 1
+vim.opt.foldlevel = 24
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

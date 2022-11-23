@@ -42,7 +42,7 @@ alias 777='chmod 777'
 
 ## development related ##
 
-alias py='python'
+alias py='python3'
 alias rust="rustc"
 alias pip-update="pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 

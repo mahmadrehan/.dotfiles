@@ -1,4 +1,8 @@
-local lspsaga = require("lspsaga")
+local ok, lspsaga = pcall(require, "lspsaga")
+if not ok then
+	return
+end
+
 -- this dude also gives the bulbs
 lspsaga.init_lsp_saga({
 	server_filetype_map = {},
@@ -72,8 +76,11 @@ local function config(_config)
 	}, _config or {})
 end
 
-local nls = require("null-ls")
-local nlsb = require("null-ls").builtins
+local ok, nls = pcall(require, "null-ls")
+if not ok then
+	return
+end
+local nlsb = nls.builtins
 
 nls.setup(config({
 	sources = {

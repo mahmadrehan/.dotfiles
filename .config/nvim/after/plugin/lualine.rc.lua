@@ -1,4 +1,9 @@
-require("lualine").setup({
+local ok, ll = pcall(require, "lualine")
+if not ok then
+	return
+end
+
+ll.setup({
 	options = {
 		icons_enabled = true,
 		theme = "tokyonight",

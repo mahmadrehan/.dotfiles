@@ -1,6 +1,15 @@
-local tabnine = require("cmp_tabnine.config")
-local lspkind = require("lspkind")
-local cmp = require("cmp")
+local ok, tabnine = pcall(require, "cmp_tabnine.config")
+if not ok then
+	return
+end
+local ok, lspkind = pcall(require, "lspkind")
+if not ok then
+	return
+end
+local ok, cmp = pcall(require, "cmp")
+if not ok then
+	return
+end
 
 local s = "> "
 local source_mapping = {
@@ -32,7 +41,11 @@ cmp.setup({
 
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			local ok, lsnip = pcall(require, "luasnip")
+			if not ok then
+				return
+			end
+			lsnip.lsp_expand(args.body)
 		end,
 	},
 
@@ -85,12 +98,24 @@ cmp.setup.cmdline("/", {
 })
 
 -- AUTO PAIRS & TAGS
+local ok, nvtsa = pcall(require, "nvim-ts-autotag")
+if not ok then
+	return
+end
+nvtsa.setup({})
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-require("nvim-ts-autotag").setup({})
-require("nvim-autopairs").setup({
+local ok, nvap = pcall(require, "nvim-autopairs")
+if not ok then
+	return
+end
+nvap.setup({
 	disable_filetype = { "TelescopePrompt", "vim" },
 })
+
+local ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not ok then
+	return
+end
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- Tabnine Completions

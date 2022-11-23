@@ -1,6 +1,11 @@
 local nnoremap = require("user.keymap").nnoremap
 
-require("nvim-treesitter.configs").setup({
+local ok, nvim_ts_conf = pcall(require, "nvim-treesitter.configs")
+if not ok then
+	return
+end
+
+nvim_ts_conf.setup({
 	ensure_installed = "all",
 	sync_install = false,
 
@@ -15,7 +20,12 @@ require("nvim-treesitter.configs").setup({
 })
 
 function ContextSetup(show_all_context)
-	require("treesitter-context").setup({
+	local ok, tscont = pcall(require, "treesitter-context")
+	if not ok then
+		return
+	end
+
+	tscont.setup({
 		enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
 		throttle = true, -- Throttles plugin updates (may improve performance)
 		max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.

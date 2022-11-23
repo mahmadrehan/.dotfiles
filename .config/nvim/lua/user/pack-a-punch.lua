@@ -49,8 +49,6 @@ return packer.startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-treesitter/playground")
 
-	use("simrat39/symbols-outline.nvim")
-
 	-- for somewhat global formatting, linting etc.
 	use("jose-elias-alvarez/null-ls.nvim")
 
