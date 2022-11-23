@@ -1,5 +1,6 @@
-export ZSH="/home/jupyter/.oh-my-zsh"
-export ZSH_CUSTOM_DIR="/home/jupyter/.config/zsh"
+h=$HOME
+export ZSH="$h/.oh-my-zsh"
+export ZSH_CUSTOM_DIR="$h/.config/zsh"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
 export ANDROID_HOME=$HOME/Android/Sdk
 export EDITOR="/usr/bin/nvim"
@@ -11,7 +12,7 @@ EXT_SDD_LOC="/run/media/drives/freeNVMe"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666,bold" #,underline"
 
 HYPHEN_INSENSITIVE="true"
-plugins=( git zsh-z zsh-autosuggestions )
+plugins=( git z zsh-autosuggestions )
 
 # other stuff
 source $ZSH/oh-my-zsh.sh
@@ -24,7 +25,7 @@ source "$ZSH_CUSTOM_DIR/rc/paths.zsh"
 eval "$(starship init zsh)"
 
 # bun completions
-[ -s "/home/jupyter/.bun/_bun" ] && source "/home/jupyter/.bun/_bun"
+[ -s "$h/.bun/_bun" ] && source "$h/.bun/_bun"
 # rust completions
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
