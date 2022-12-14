@@ -8,8 +8,8 @@ local function trim(s)
 end
 
 local function callBrowser(value, browser)
-	local cmdBrowser = "firefox"
-	if browser == "Brave" or browser == "Brave Browser" then
+	local cmdBrowser = "chromium"
+	if browser == "Brave" then
 		cmdBrowser = "brave"
 	end
 	if browser == "Firefox" then

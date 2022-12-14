@@ -18,6 +18,9 @@ return packer.startup(function(use)
 	-- for performance reasons
 	use({ "lewis6991/impatient.nvim" })
 
+	-- popup ui rendering or something
+	use("MunifTanjim/nui.nvim")
+
 	-- base required stuff
 	use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/mason.nvim" })
@@ -29,6 +32,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline")
 
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+
+	use({ "github/copilot.vim" })
 
 	use("glepnir/lspsaga.nvim")
 	use("onsails/lspkind-nvim")
@@ -43,6 +48,8 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap")
 
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
+	-- vscode habits die hard
+	use("nvim-neo-tree/neo-tree.nvim")
 
 	-- Nvim Tree Shitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -55,7 +62,7 @@ return packer.startup(function(use)
 	-- Harpoon man
 	use("ThePrimeagen/harpoon")
 	-- VSCode habits die hard...
-	use({ "noib3/cokeline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+	-- use({ "noib3/cokeline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- for playing sherlock with the code
 	use("nvim-telescope/telescope.nvim")
@@ -66,9 +73,8 @@ return packer.startup(function(use)
 
 	use("mbbill/undotree")
 
-	--
-	-- ** Language specific ** --
-	--
+	use("sheerun/vim-polyglot")
+
 	-- Lua
 	use("nvim-lua/lsp_extensions.nvim")
 	use("folke/lua-dev.nvim") -- for giving completions for the nvim lua api
@@ -81,50 +87,37 @@ return packer.startup(function(use)
 	-- Dart / Flutter
 	-- use({ "akinsho/flutter-tools.nvim", ft = { "dart" } })
 	use({ "dart-lang/dart-vim-plugin", ft = { "dart" } })
-	-- java (yes)
-	use("mfussenegger/nvim-jdtls")
+	use("simrat39/rust-tools.nvim")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+	-- use("tpope/vim-fugitive")
 
 	-- For Visulaizing Vim Marks
 	use("kshenoy/vim-signature")
 
-	-- commenting
 	use("numToStr/Comment.nvim")
 	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 
 	use({ "windwp/nvim-ts-autotag" })
 	use({ "windwp/nvim-autopairs" })
 
-	-- better syntax support
-	use("sheerun/vim-polyglot")
-
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
-
-	-- for rendering popups n stuff
-	use("MunifTanjim/nui.nvim")
-	-- directory tree stuff
-	use("nvim-neo-tree/neo-tree.nvim")
 
 	-- -------------------------------
 	-- Giving some urgonomiks / flashiness
 	-- ------------------------------
 
-	use("norcalli/nvim-colorizer.lua")
+	use("norcalli/nvim-colorizer.lua") -- for showing colors for hex codes
 	use("lukas-reineke/indent-blankline.nvim")
 	use("ellisonleao/gruvbox.nvim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
-	use("mvllow/modes.nvim")
 	use("kyazdani42/nvim-web-devicons")
+	-- use("mvllow/modes.nvim")
 
-	-- I guess this marks the end of packing some punch in the editor --
+	-- The END, this marks the end of packing some punch in the editor --
 end)

@@ -92,7 +92,7 @@ nls.setup(config({
 		nlsb.formatting.stylua,
 		-- js/ts
 		nlsb.formatting.prettierd,
-		nlsb.diagnostics.eslint_d,
+		-- nlsb.diagnostics.eslint_d,
 		nlsb.diagnostics.tsc,
 		-- rust
 		nlsb.formatting.rustfmt,
@@ -156,6 +156,7 @@ require("lspconfig").sumneko_lua.setup(config({
 		},
 	},
 }))
+
 require("lspconfig").rust_analyzer.setup(config({
 	settings = {
 		["rust-analyzer"] = {

@@ -17,11 +17,7 @@ ls.config.set_config({
 	},
 })
 
--- source the snippets
-
--- other snippets
-
--- local snippets
+-- sourcing snippets
 
 require("luasnip.loaders.from_lua").lazy_load({
 	paths = "~/.config/nvim/luasnippets/",

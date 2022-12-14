@@ -1,7 +1,3 @@
-local ok, tabnine = pcall(require, "cmp_tabnine.config")
-if not ok then
-	return
-end
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
 	return
@@ -10,12 +6,16 @@ local ok, cmp = pcall(require, "cmp")
 if not ok then
 	return
 end
+local ok, tabnine = pcall(require, "cmp_tabnine.config")
+if not ok then
+	return
+end
 
 local s = "> "
 local source_mapping = {
 	nvim_lsp = s .. "LSP",
 	nvim_lua = s .. "Lua",
-	cmp_tabnine = s .. "Prime9",
+	cmp_tabnine = s .. "TabNine",
 	path = s .. "Path",
 	cmp_path = s .. "Path",
 	luasnip = s .. "LuaSnip",
@@ -26,15 +26,16 @@ local mappings = {
 	["<Down>"] = cmp.mapping.scroll_docs(4),
 	["<C-D>"] = cmp.mapping.select_prev_item(),
 	["<C-F>"] = cmp.mapping.select_next_item(),
-	["<C-Space>"] = cmp.mapping.complete(),
 	["<Tab>"] = cmp.mapping.confirm({ select = true }),
+	["<C-Space>"] = cmp.mapping.complete(),
+	["<Ctrl-e>"] = cmp.mapping.close(),
 }
 
 cmp.setup({
 	mapping = mappings,
 	sources = {
-		{ name = "luasnip", option = { use_show_condition = false } },
 		{ name = "cmp_tabnine" },
+		{ name = "luasnip", option = { use_show_condition = false } },
 		{ name = "nvim_lsp" },
 		{ name = "path", option = { trailing_slash = true } },
 	},
@@ -48,7 +49,6 @@ cmp.setup({
 			lsnip.lsp_expand(args.body)
 		end,
 	},
-
 	formatting = {
 		format = function(entry, vim_item)
 			vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -64,7 +64,6 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-
 	window = {
 		completion = {
 			winhighlight = "Normal:None,FloatBorder:None,Search:None",
@@ -77,7 +76,7 @@ cmp.setup({
 	},
 
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 	},
 })
 

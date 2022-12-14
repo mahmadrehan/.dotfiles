@@ -37,7 +37,7 @@ telescope.setup({
 		},
 		recent_files = {
 			stat_files = true,
-			-- only_cwd = true,
+			only_cwd = true,
 		},
 	},
 })

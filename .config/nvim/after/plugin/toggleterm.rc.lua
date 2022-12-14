@@ -1,4 +1,7 @@
-local tt = require("toggleterm")
+local ok, tt = pcall(require, "toggleterm")
+if not ok then
+	return
+end
 local nnoremap = require("user.keymap").nnoremap
 
 tt.setup({

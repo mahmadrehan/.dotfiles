@@ -1,11 +1,11 @@
 local ok, cline = pcall(require, "cokeline")
-local get_hex = require("cokeline/utils").get_hex
-local Remap = require("user.keymap")
-local nnoremap = Remap.nnoremap
-
 if not ok then
 	return
 end
+
+local get_hex = require("cokeline/utils").get_hex
+local Remap = require("user.keymap")
+local nnoremap = Remap.nnoremap
 
 local modified_clr = "#73daa1"
 local error_clr = "#f7768e"

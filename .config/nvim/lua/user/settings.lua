@@ -47,6 +47,6 @@ vim.g.transparent_enabled = true
 vim.g.mapleader = " "
 
 vim.opt.termguicolors = true
--- vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 
 vim.cmd("set t_Co=256")

@@ -18,6 +18,6 @@ local snippets, autosnippets = {}, {}
 -- watch teej's video on "kool" tricks on how to setup far more sick
 -- snippets, it'll take 10-20 mins max trust me it'll be worth it
 
-table.insert(snippets, s("wth", { t("Du bist ein Bully Maguire") }))
+table.insert(snippets, s("wth", { t("hocus pocus") }))
 
 return snippets, autosnippets
