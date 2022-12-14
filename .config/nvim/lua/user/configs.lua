@@ -5,12 +5,6 @@ local yank_group = augroup("HighlightYank", {})
 -- auGroups
 
 PersonalGroup = augroup("user101", {})
--- BlackOnSave = augroup("BOS", {})
-
--- Copilot config
-
--- vim.cmd([[ imap <silent><script><expr> <Leader>; copilot#Accept("\<CR>") ]])
--- vim.cmd([[ let g:copilot_no_tab_map = v:true ]])
 
 -----------------------------
 ---    other configs
@@ -33,14 +27,6 @@ autocmd("TextYankPost", {
 		})
 	end,
 })
-
--- autocmd({ "BufEnter", "BufWinEnter", "TabEnter" }, {
--- 	group = PersonalGroup,
--- 	pattern = "*.rs",
--- 	callback = function()
--- 		require("lsp_extensions").inlay_hints({})
--- 	end,
--- })
 
 autocmd({ "BufWritePre" }, {
 	group = PersonalGroup,
