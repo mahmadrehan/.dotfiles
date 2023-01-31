@@ -173,5 +173,5 @@ ntree.setup({
 })
 
 -- NeoTree Keymaps
-vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-m>", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })

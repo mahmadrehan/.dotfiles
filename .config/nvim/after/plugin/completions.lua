@@ -15,7 +15,7 @@ local s = "> "
 local source_mapping = {
 	nvim_lsp = s .. "LSP",
 	nvim_lua = s .. "Lua",
-	cmp_tabnine = s .. "TabNine",
+	cmp_tabnine = s .. "T9",
 	path = s .. "Path",
 	cmp_path = s .. "Path",
 	luasnip = s .. "LuaSnip",
@@ -35,9 +35,9 @@ cmp.setup({
 	mapping = mappings,
 	sources = {
 		{ name = "cmp_tabnine" },
-		{ name = "luasnip", option = { use_show_condition = false } },
 		{ name = "nvim_lsp" },
 		{ name = "path", option = { trailing_slash = true } },
+		{ name = "luasnip", option = { use_show_condition = false } },
 	},
 
 	snippet = {
@@ -49,17 +49,37 @@ cmp.setup({
 			lsnip.lsp_expand(args.body)
 		end,
 	},
+
 	formatting = {
 		format = function(entry, vim_item)
-			vim_item.kind = lspkind.presets.default[vim_item.kind]
+			local symbol_map = {
+				Variable = "",
+				Constant = "",
+				Function = "",
+				Class = "",
+				Method = "",
+				Keyword = "",
+				Enum = "",
+				Type = "",
+				Property = "",
+				-- Field = "",
+				Field = "",
+			}
+			-- local c_type = vim_item.kind
+			if symbol_map[vim_item.kind] then
+				vim_item.kind = symbol_map[vim_item.kind]
+			else
+				vim_item.kind = lspkind.presets.default[vim_item.kind]
+			end
 			local menu = source_mapping[entry.source.name]
 			if entry.source.name == "cmp_tabnine" then
 				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
 					menu = entry.completion_item.data.detail .. " " .. menu
 				end
 				vim_item.kind = ""
-				-- vim_item.kind = "ﯢ"
 			end
+
+			-- vim_item.kind = vim_item.kind .. " " .. c_type
 			vim_item.menu = menu
 			return vim_item
 		end,
@@ -90,24 +110,25 @@ cmp.setup.cmdline(":", {
 })
 
 cmp.setup.cmdline("/", {
-	mapping = mappings,
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
 		{ name = "cmdline" },
 	},
 })
 
 -- AUTO PAIRS & TAGS
-local ok, nvtsa = pcall(require, "nvim-ts-autotag")
-if not ok then
-	return
-end
-nvtsa.setup({})
 
-local ok, nvap = pcall(require, "nvim-autopairs")
+local ok, nvim_ts_autotag = pcall(require, "nvim-ts-autotag")
 if not ok then
 	return
 end
-nvap.setup({
+nvim_ts_autotag.setup({})
+
+local ok, nvim_autopairs = pcall(require, "nvim-autopairs")
+if not ok then
+	return
+end
+nvim_autopairs.setup({
 	disable_filetype = { "TelescopePrompt", "vim" },
 })
 
@@ -121,7 +142,7 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 tabnine:setup({
 	max_lines = 1000,
-	max_num_results = 20,
+	max_num_results = 10,
 	sort = true,
 	run_on_every_keystroke = true,
 	snippet_placeholder = "..",

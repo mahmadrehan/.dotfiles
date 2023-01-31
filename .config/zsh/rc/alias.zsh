@@ -7,7 +7,7 @@ MAIN_HDD_LOC="/run/media/drives/HDD1"
 
 ## Common / general ##
 
-alias nv="nvim"
+alias n="nvim"
 alias cat="bat"
 alias grep="rg"
 alias l="lsd"
@@ -65,7 +65,7 @@ alias drmi="Check zconf line 59 for the command"
 alias gtmain="cd $DOC_SSD_LOC/main"
 alias gthdd="cd $MAIN_HDD_LOC/data"
 
-alias clib="cd $DOC_SSD_LOC/main/GitHub/Library"
+alias clib="cd $DOC_SSD_LOC/main/GitHub/library"
 alias prjs="cd $DOC_SSD_LOC/main/Projects"
 alias rndm="cd $DOC_SSD_LOC/main/Random"
 alias docs="cd $DOC_SSD_LOC/main/Documentation"
@@ -73,6 +73,6 @@ alias github="cd $DOC_SSD_LOC/main/GitHub"
 
 ## for navigating to config dirs ##
 
-alias nvimconf="cd ~/.config/nvim && nv ."
-alias zconf="cd ~/.config/zsh && nv ."
+alias nvimconf="cd ~/.config/nvim && n ."
+alias zconf="cd ~/.config/zsh && n ."
 alias termconf="cd ~/.config/kitty"

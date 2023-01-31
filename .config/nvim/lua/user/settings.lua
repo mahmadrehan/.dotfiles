@@ -1,52 +1,59 @@
--- vim.opt.clipboard = "unnamedplus"
-vim.opt.clipboard = ""
-vim.opt.mouse = "a"
+local o = vim.opt
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.expandtab = true
+-- o.clipboard = "unnamedplus"
+o.clipboard = ""
+o.mouse = "a"
 
-vim.opt.cindent = true
-vim.opt.smartindent = true
-vim.opt.autoindent = true
+o.shiftwidth = 4
+o.tabstop = 4
+o.softtabstop = 4
+o.expandtab = true
 
-vim.opt.wrap = true
+o.cindent = true
+o.smartindent = true
+o.autoindent = true
+o.wrap = true
 
-vim.opt.foldmethod = "indent"
-vim.opt.foldlevel = 24
+-- setup folds in vim
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+o.foldmethod = "indent"
+o.foldnestmax = 10
+o.foldlevel = 99
+o.foldlevelstart = 99
+-- o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldminlines = 1
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.hidden = true
+o.nu = true
+o.relativenumber = true
 
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.undodir = os.getenv("HOME") .. "/.local/undodir"
-vim.opt.undofile = true
+o.hlsearch = false
+o.hidden = true
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
 
-vim.opt.backspace = { "indent", "eol", "start" }
+o.backup = false
+o.swapfile = false
+o.undodir = os.getenv("HOME") .. "/.local/undodir"
+o.undofile = true
 
-vim.opt.cmdheight = 1
-vim.opt.updatetime = 50
-vim.opt.timeoutlen = 500
-vim.opt.scrolloff = 8
-vim.opt.showmode = false
-vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
-vim.opt.signcolumn = "yes"
--- vim.opt.spell = true
+o.backspace = "indent,eol,start"
 
-vim.opt.colorcolumn = "82"
+o.cmdheight = 1
+o.updatetime = 50
+o.timeoutlen = 500
+o.scrolloff = 8
+o.showmode = false
+o.completeopt = { "menuone", "noinsert", "noselect" }
+o.signcolumn = "yes"
 
-vim.opt.encoding = "utf-8"
+o.colorcolumn = "82"
+o.encoding = "utf-8"
 
-vim.g.transparent_enabled = true
 vim.g.mapleader = " "
 
-vim.opt.termguicolors = true
-vim.opt.guicursor = ""
+o.termguicolors = true
+-- to make the cursor thick for all modes
+-- o.guicursor = ""
 
 vim.cmd("set t_Co=256")

@@ -1,11 +1,11 @@
-local ok, nvim_ts_conf = pcall(require, "nvim-treesitter.configs")
+local ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not ok then
 	return
 end
 
 local nnoremap = require("user.keymap").nnoremap
 
-nvim_ts_conf.setup({
+treesitter.setup({
 	ensure_installed = "all",
 	sync_install = false,
 

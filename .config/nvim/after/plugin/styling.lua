@@ -5,9 +5,9 @@ if not ok then
 end
 
 ib.setup({
-	show_end_of_line = true,
+	show_end_of_line = false,
 	show_indent_guides = false,
-	show_trailing_blankline_indent = false,
+	show_trailing_blankline_indent = true,
 	show_current_context = true,
 	show_current_context_start = true,
 })

@@ -29,3 +29,5 @@ eval "$(starship init zsh)"
 # rust completions
 [ -f ~/.cargo/env ] && source $HOME/.cargo/env
 
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

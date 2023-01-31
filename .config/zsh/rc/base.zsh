@@ -31,3 +31,4 @@ export DOCKER_BUILDKIT=1
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export ANSIBLE_SCRIPT_DIR="/run/media/drives/documentSSD/main/Scripts/ansible"
+export PATH="$HOME/Programs/istio/bin:$PATH"
