@@ -68,6 +68,7 @@ alias gthdd="cd $MAIN_HDD_LOC/data"
 alias clib="cd $DOC_SSD_LOC/main/GitHub/library"
 alias prjs="cd $DOC_SSD_LOC/main/Projects"
 alias rndm="cd $DOC_SSD_LOC/main/Random"
+alias scs="cd $DOC_SSD_LOC/main/Scripts"
 alias docs="cd $DOC_SSD_LOC/main/Documentation"
 alias github="cd $DOC_SSD_LOC/main/GitHub"
 

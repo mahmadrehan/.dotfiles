@@ -75,7 +75,6 @@ require("mason-lspconfig").setup({
     "tsserver",
     "pyright",
     "rust_analyzer",
-    "sumneko_lua",
     "svelte",
     "sqls",
     "tailwindcss",

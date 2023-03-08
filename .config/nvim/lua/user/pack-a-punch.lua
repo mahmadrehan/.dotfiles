@@ -29,7 +29,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
 
-	-- AI 101
+	-- ai-aided completion
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 	use({ "github/copilot.vim" })
 
@@ -41,11 +41,10 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	-- popup ui rendering
-	-- WARNING: this dude here overrides foldmethod to manual, and neo-tree uses it
-	-- use("MunifTanjim/nui.nvim")
+	use("MunifTanjim/nui.nvim")
+	use("nvim-neo-tree/neo-tree.nvim")
 
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
-	-- use("nvim-neo-tree/neo-tree.nvim")
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-context")
@@ -63,7 +62,6 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
 	use("nvim-telescope/telescope-dap.nvim")
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use("smartpde/telescope-recent-files")
 
 	use("sharkdp/fd")
@@ -106,10 +104,10 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua") -- for showing colors for hex codes
 	use("lukas-reineke/indent-blankline.nvim")
 
-	use("ellisonleao/gruvbox.nvim")
 	use("rose-pine/neovim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
-	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "rebelot/kanagawa.nvim" })
 
 	-- The END, this marks the end of packing some punch in the editor --
+	--
 end)

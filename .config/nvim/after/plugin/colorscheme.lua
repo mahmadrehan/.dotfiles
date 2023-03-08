@@ -1,10 +1,8 @@
 function TokyoNight()
 	local ok, tkn = pcall(require, "tokyonight")
-
 	if not ok then
 		return
 	end
-
 	tkn.setup({
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
@@ -30,35 +28,6 @@ function TokyoNight()
 	})
 	-- These commands will sort buffers by directory, language, or a custom criteria
 	vim.cmd.colorscheme("tokyonight")
-end
-
-function GruvBox()
-	local ok, gruvbox = pcall(require, "gruvbox")
-
-	if not ok then
-		return
-	end
-
-	gruvbox.setup({
-		undercurl = true,
-		underline = true,
-		bold = true,
-		italic = true,
-		strikethrough = true,
-		invert_selection = false,
-		invert_signs = false,
-		invert_tabline = false,
-		invert_intend_guides = false,
-		inverse = true, -- invert background for search, diffs, statuslines and errors
-		contrast = "", -- can be "hard", "soft" or empty string
-		overrides = {},
-		dim_inactive = false,
-		transparent_mode = true,
-	})
-	vim.cmd.colorscheme("gruvbox")
-
-	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 end
 
 function RosePine()
@@ -110,49 +79,32 @@ function RosePine()
 	vim.cmd.colorscheme("rose-pine")
 end
 
-function Catppuccin()
-	local ok, catppuccin = pcall(require, "catppuccin")
-
+function Kanagawa()
+	local ok, _k = pcall(require, "kanagawa")
 	if not ok then
 		return
 	end
-
-	catppuccin.setup({
-		flavour = "mocha", -- latte, frappe, macihiato, mocha
-		background = { -- :h background
-			light = "latte",
-			dark = "mocha",
-		},
-		transparent_background = true,
-		term_colors = true,
-		dim_inactive = {
-			enabled = false,
-			shade = "dark",
-			percentage = 0.15,
-		},
-		no_italic = false, -- Force no italic
-		no_bold = false, -- Force no bold
-		styles = {
-			comments = { "italic" },
-			conditionals = { "italic" },
-		},
-		color_overrides = {},
-		custom_highlights = {},
-		integrations = {
-			cmp = true,
-			gitsigns = true,
-			nvimtree = true,
-			telescope = true,
-			notify = false,
-			mini = false,
-			-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-		},
+	_k.setup({
+		undercurl = true, -- enable undercurls
+		commentStyle = { italic = true },
+		functionStyle = {},
+		keywordStyle = { italic = true },
+		statementStyle = { bold = true },
+		typeStyle = {},
+		variablebuiltinStyle = { italic = true },
+		specialReturn = true, -- special highlight for the return keyword
+		specialException = true, -- special highlight for exception handling keywords
+		transparent = true, -- do not set background color
+		dimInactive = true, -- dim inactive window `:h hl-NormalNC`
+		globalStatus = false, -- adjust window separators highlight for laststatus=3
+		terminalColors = true, -- define vim.g.terminal_color_{0,17}
+		colors = {},
+		overrides = {},
+		theme = "default", -- Load "default" theme or the experimental "light" theme
 	})
-
-	vim.cmd.colorscheme("catppuccin")
+	vim.cmd.colorscheme("kanagawa")
 end
 
--- Catppuccin()
--- GruvBox()
 -- RosePine()
-TokyoNight()
+-- TokyoNight()
+Kanagawa()

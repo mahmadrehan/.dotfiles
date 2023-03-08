@@ -2,9 +2,7 @@ local ok, telescope = pcall(require, "telescope")
 if not ok then
 	return
 end
-
 local actions = require("telescope.actions")
-
 local Remap = require("user.keymap")
 local nnoremap = Remap.nnoremap
 
@@ -25,7 +23,6 @@ telescope.setup({
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
 		mappings = {
 			i = {
 				["<C-x>"] = false,
@@ -42,17 +39,12 @@ telescope.setup({
 			stat_files = true,
 			only_cwd = true,
 		},
-		file_browswer = {
-			hijack_netrw = true,
-		},
 	},
 })
 
-require("telescope").load_extension("fzy_native")
-require("telescope").load_extension("harpoon")
-require("telescope").load_extension("recent_files")
-require("telescope").load_extension("file_browser")
-
+telescope.load_extension("fzy_native")
+telescope.load_extension("harpoon")
+telescope.load_extension("recent_files")
 -- ---
 -- telescope rempas
 -- ---
@@ -71,11 +63,7 @@ nnoremap("<C-p>", function()
 	})
 end, opts)
 
--- nnoremap("<Leader>se", function()
--- 	require("telescope.builtin").git_files()
--- end, opts)
-
--- nnoremap("<C-m>", ":Telescope file_browser<CR>", opts)
+nnoremap("<C-l>", ":Telescope diagnostics<CR>", opts)
 
 nnoremap("<Leader>pb", function()
 	require("telescope.builtin").buffers()

@@ -29,6 +29,10 @@ unset __conda_setup
 # some shell envs vars
 export DOCKER_BUILDKIT=1
 export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
 export ANSIBLE_SCRIPT_DIR="/run/media/drives/documentSSD/main/Scripts/ansible"
+export PATH="$PNPM_HOME:$PATH"
 export PATH="$HOME/Programs/istio/bin:$PATH"
+
+# INFO: some keymaps
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^g "source goto-project\n"

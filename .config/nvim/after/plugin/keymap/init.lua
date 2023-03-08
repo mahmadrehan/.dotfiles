@@ -17,9 +17,12 @@ vnoremap("<leader>q", ":bd!<CR>")
 
 nnoremap("<leader>op", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
+-- INFO: this cursed keybind has to exist because of neotree's overriding of the foldmethod
+nnoremap("<leader>mi", ":set foldmethod=indent<CR>")
+
 -- for a quick searh and replace
 
-nnoremap("<leader>fr", ":%s/")
+nnoremap("<leader>sr", ":%s/")
 
 -- for pasting but not copying the selected to buffer
 xnoremap("<leader>p", '"_dP')

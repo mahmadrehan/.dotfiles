@@ -87,7 +87,6 @@ end, opts)
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
-
 		on_attach = function(client, _)
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 			-- local is_async = "false"
@@ -105,16 +104,18 @@ local function config(_config)
 			-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = " .. is_async .. "})")
 
 			nnoremap("<leader>f", function()
-				vim.lsp.buf.format({ async = false })
+				vim.lsp.buf.format({ async = true })
 			end, opts)
 		end,
 	}, _config or {})
 end
 
 local ok, nls = pcall(require, "null-ls")
+
 if not ok then
 	return
 end
+
 local nlsb = nls.builtins
 
 nls.setup(config({
@@ -122,6 +123,7 @@ nls.setup(config({
 		-- diagnostics
 		nlsb.diagnostics.cpplint,
 		nlsb.diagnostics.tsc,
+		-- nlsb.diagnostics.protolint,
 		-- formatters
 		nlsb.formatting.gofmt,
 		nlsb.formatting.stylua,
@@ -158,7 +160,7 @@ require("lspconfig").gopls.setup(config({
 		},
 	},
 }))
-require("lspconfig").sumneko_lua.setup(config({
+require("lspconfig").lua_ls.setup(config({
 	settings = {
 		Lua = {
 			runtime = {
@@ -206,7 +208,7 @@ require("lspconfig").jdtls.setup(config())
 require("lspconfig").ccls.setup(config()) -- c/cpp
 require("lspconfig").zls.setup(config())
 require("lspconfig").solang.setup(config())
--- frontend focused
+-- INFO: frontend focused
 -- JS/TS
 require("lspconfig").tsserver.setup(config({
 	-- root_dir = require("lspconfig.util").root_pattern(".git"),
@@ -220,7 +222,17 @@ require("lspconfig").prismals.setup(config({
 	filetypes = { "prisma" },
 	cmd = { "prisma-language-server", "--stdio" },
 }))
--- require("lspconfig").tailwindcss.setup(config())
+require("lspconfig").tailwindcss.setup(config({
+	settings = {
+		tailwindCSS = {
+			experimental = {
+				classRegex = {
+					{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+				},
+			},
+		},
+	},
+}))
 -- require("lspconfig").graphql.setup(config())
 require("lspconfig").svelte.setup(config())
 -- other
@@ -228,3 +240,4 @@ require("lspconfig").sqlls.setup(config())
 require("lspconfig").bashls.setup(config())
 require("lspconfig").dockerls.setup(config())
 require("lspconfig").ansiblels.setup(config())
+require("lspconfig").bufls.setup(config())

@@ -10,9 +10,7 @@ ntree.setup({
 	enable_git_status = true,
 	enable_diagnostics = true,
 	default_component_configs = {
-		container = {
-			enable_character_fade = true,
-		},
+		container = { enable_character_fade = true },
 		indent = {
 			indent_size = 2,
 			padding = 1, -- extra padding on left hand side
@@ -173,5 +171,5 @@ ntree.setup({
 })
 
 -- NeoTree Keymaps
-vim.keymap.set("n", "<C-m>", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
--- vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-m>", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
