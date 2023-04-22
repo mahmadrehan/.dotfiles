@@ -17,8 +17,8 @@ plugins=( git z zsh-autosuggestions )
 # other stuff
 source $ZSH/oh-my-zsh.sh
 source <(kubectl completion zsh)
-source "$ZSH_CUSTOM_DIR/rc/alias.zsh"
 source "$ZSH_CUSTOM_DIR/rc/base.zsh"
+source "$ZSH_CUSTOM_DIR/rc/alias.zsh"
 source "$ZSH_CUSTOM_DIR/rc/paths.zsh"
 
 # starship
@@ -31,3 +31,21 @@ eval "$(starship init zsh)"
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/run/media/drives/freeNVMe/jupyter/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/run/media/drives/freeNVMe/jupyter/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/run/media/drives/freeNVMe/jupyter/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/run/media/drives/freeNVMe/jupyter/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

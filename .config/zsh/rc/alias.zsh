@@ -19,6 +19,7 @@ alias untar="tar -zxvf $1"
 alias kpid="kill -SIGKILL"
 alias gpustats="watch -n 1 nvidia-smi"
 alias rmnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
+alias oimg="kitty +kitten icat"
 
 ## For managing dotfiles ##
 
@@ -77,3 +78,4 @@ alias github="cd $DOC_SSD_LOC/main/GitHub"
 alias nvimconf="cd ~/.config/nvim && n ."
 alias zconf="cd ~/.config/zsh && n ."
 alias termconf="cd ~/.config/kitty"
+alias hypconf="cd ~/.config/hypr/ && n hyprland.conf"

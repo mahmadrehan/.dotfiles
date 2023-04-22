@@ -14,9 +14,7 @@ packer.init({
 
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
-
 	use("nvim-lua/plenary.nvim")
-
 	use("lewis6991/impatient.nvim")
 
 	-- base required stuff
@@ -31,6 +29,7 @@ return packer.startup(function(use)
 
 	-- ai-aided completion
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+	-- use({ 'codota/tabnine-nvim', run = "./dl_binaries.sh" })
 	use({ "github/copilot.vim" })
 
 	use("glepnir/lspsaga.nvim")
@@ -65,9 +64,7 @@ return packer.startup(function(use)
 	use("smartpde/telescope-recent-files")
 
 	use("sharkdp/fd")
-
 	use("mbbill/undotree")
-
 	use("sheerun/vim-polyglot")
 
 	-- language focused plugins
@@ -76,7 +73,6 @@ return packer.startup(function(use)
 	use({ "mattn/emmet-vim", ft = { "html", "jsx", "tsx", "rust" } })
 	use({ "pantharshit00/vim-prisma", ft = { "prisma", "ts", "js" } })
 	use({ "dart-lang/dart-vim-plugin", ft = { "dart" } })
-	use("simrat39/rust-tools.nvim")
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
@@ -97,6 +93,12 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
+	use({
+		"utilyre/barbecue.nvim",
+		tag = "*",
+		requires = { "SmiteshP/nvim-navic" },
+	})
+
 	-- INFO: Giving some urgonomiks / flashiness
 	-- ------------------------------------------
 
@@ -107,6 +109,7 @@ return packer.startup(function(use)
 	use("rose-pine/neovim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
 	use({ "rebelot/kanagawa.nvim" })
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- The END, this marks the end of packing some punch in the editor --
 	--

@@ -36,10 +36,9 @@ cmp.setup({
 	sources = {
 		{ name = "cmp_tabnine" },
 		{ name = "nvim_lsp" },
-		{ name = "path", option = { trailing_slash = true } },
-		{ name = "luasnip", option = { use_show_condition = false } },
+		{ name = "path",       option = { trailing_slash = true } },
+		{ name = "luasnip",    option = { use_show_condition = false } },
 	},
-
 	snippet = {
 		expand = function(args)
 			local ok, lsnip = pcall(require, "luasnip")
@@ -49,7 +48,6 @@ cmp.setup({
 			lsnip.lsp_expand(args.body)
 		end,
 	},
-
 	formatting = {
 		format = function(entry, vim_item)
 			local symbol_map = {
@@ -86,7 +84,7 @@ cmp.setup({
 	},
 	window = {
 		completion = {
-			winhighlight = "Normal:None,FloatBorder:None,Search:None",
+			winhighlight = "CursorLine:PmenuSel",
 			side_padding = 1,
 			border = "rounded",
 		},
@@ -94,7 +92,6 @@ cmp.setup({
 			border = "rounded",
 		},
 	},
-
 	experimental = {
 		ghost_text = false,
 	},

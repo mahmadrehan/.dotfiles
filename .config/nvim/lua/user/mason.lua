@@ -6,14 +6,12 @@ end
 
 mason.setup({
   PATH = "prepend",
-
   pip = {
     -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
     -- and is not recommended.
     -- Example: { "--proxy", "https://proxyserver" }
     install_args = {},
   },
-
   log_level = vim.log.levels.INFO,
   max_concurrent_installers = 4,
   github = {
@@ -24,7 +22,6 @@ mason.setup({
     -- 3. The asset name (e.g. "rust-analyzer-v0.3.0-x86_64-unknown-linux-gnu.tar.gz")
     download_url_template = "https://github.com/%s/releases/download/%s/%s",
   },
-
   ui = {
     -- run when the :Mason window is opened.
     check_outdated_packages_on_open = true,
@@ -35,7 +32,6 @@ mason.setup({
       package_pending = "",
       package_uninstalled = "✗",
     },
-
     keymaps = {
       -- Keymap to expand a package
       toggle_package_expand = "<CR>",
@@ -76,9 +72,9 @@ require("mason-lspconfig").setup({
     "pyright",
     "rust_analyzer",
     "svelte",
-    "sqls",
     "tailwindcss",
     "yamlls",
     "zls",
   },
+  automatic_installation = true,
 })

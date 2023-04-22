@@ -22,37 +22,37 @@ lsaga.setup({
 		click_support = false,
 	},
 	ui = {
-		-- currently only round theme
-		theme = "round",
-		-- this option only work in neovim 0.9
-		title = true,
-		-- border type can be single,double,rounded,solid,shadow.
-		border = "rounded",
-		winblend = 5,
-		expand = "",
-		collapse = "",
-		preview = " ",
-		code_action = "❔",
-		diagnostic = "👀",
-		incoming = " ",
-		outgoing = " ",
-		colors = {
-			--float window normal background color
-			normal_bg = "#1A1A29",
-			--title background color
-			title_bg = "#3ddc84",
-			red = "#e95678",
-			magenta = "#b33076",
-			orange = "#FF8700",
-			yellow = "#f7bb3b",
-			green = "#afd700",
-			cyan = "#36d0e0",
-			blue = "#61afef",
-			purple = "#CBA6F7",
-			white = "#efefef",
-			black = "#010101",
-		},
-		kind = {},
+		-- -- currently only round theme
+		-- theme = "round",
+		-- -- this option only work in neovim 0.9
+		-- title = true,
+		-- -- border type can be single,double,rounded,solid,shadow.
+		-- border = "rounded",
+		-- winblend = 5,
+		-- expand = "",
+		-- collapse = "",
+		-- preview = " ",
+		-- code_action = "❔",
+		-- diagnostic = "👀",
+		-- incoming = " ",
+		-- outgoing = " ",
+		-- colors = {
+		-- 	--float window normal background color
+		-- 	normal_bg = "#1A1A29",
+		-- 	--title background color
+		-- 	title_bg = "#3ddc84",
+		-- 	red = "#e95678",
+		-- 	magenta = "#b33076",
+		-- 	orange = "#FF8700",
+		-- 	yellow = "#f7bb3b",
+		-- 	green = "#afd700",
+		-- 	cyan = "#36d0e0",
+		-- 	blue = "#61afef",
+		-- 	purple = "#CBA6F7",
+		-- 	white = "#efefef",
+		-- 	black = "#010101",
+		-- },
+		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 	},
 })
 
@@ -63,26 +63,6 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local opts = { silent = true }
-nnoremap("K", function()
-	vim.cmd("Lspsaga hover_doc")
-end, opts)
-nnoremap("<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-nnoremap("<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
-nnoremap("]d", function()
-	vim.cmd("Lspsaga diagnostic_jump_next")
-end, opts)
-nnoremap("[d", function()
-	vim.cmd("Lspsaga diagnostic_jump_prev")
-end, opts)
-nnoremap("<leader>vrn", function()
-	vim.cmd("Lspsaga rename")
-end, opts)
-nnoremap("<leader>ca", function()
-	vim.cmd("Lspsaga code_action")
-end, opts)
-nnoremap("<leader>vws", function()
-	vim.lsp.buf.workspace_symbol()
-end, opts)
 
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
@@ -103,6 +83,27 @@ local function config(_config)
 			-- end
 			-- vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = " .. is_async .. "})")
 
+			nnoremap("K", function()
+				vim.cmd("Lspsaga hover_doc")
+				-- vim.lsp.buf.hover()
+			end, opts)
+			nnoremap("<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+			nnoremap("<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
+			nnoremap("]d", function()
+				vim.cmd("Lspsaga diagnostic_jump_next")
+			end, opts)
+			nnoremap("[d", function()
+				vim.cmd("Lspsaga diagnostic_jump_prev")
+			end, opts)
+			nnoremap("<leader>vrn", function()
+				vim.cmd("Lspsaga rename")
+			end, opts)
+			nnoremap("<leader>ca", function()
+				vim.cmd("Lspsaga code_action")
+			end, opts)
+			nnoremap("<leader>vws", function()
+				vim.lsp.buf.workspace_symbol()
+			end, opts)
 			nnoremap("<leader>f", function()
 				vim.lsp.buf.format({ async = true })
 			end, opts)
@@ -121,10 +122,15 @@ local nlsb = nls.builtins
 nls.setup(config({
 	sources = {
 		-- diagnostics
-		nlsb.diagnostics.cpplint,
-		nlsb.diagnostics.tsc,
 		-- nlsb.diagnostics.protolint,
+		nlsb.diagnostics.tsc,
+		nlsb.diagnostics.sqlfluff.with({
+			extra_args = { "--dialect", "mysql" },
+		}),
 		-- formatters
+		nlsb.formatting.sqlfluff.with({
+			extra_args = { "--dialect", "mysql" },
+		}),
 		nlsb.formatting.gofmt,
 		nlsb.formatting.stylua,
 		nlsb.formatting.prettierd,
@@ -141,7 +147,6 @@ nls.setup(config({
 require("lspconfig").dartls.setup(config())
 -- python
 require("lspconfig").pyright.setup(config())
-require("lspconfig").jedi_language_server.setup(config())
 
 -- GoLang
 require("lspconfig").gopls.setup(config({
@@ -183,7 +188,6 @@ require("lspconfig").lua_ls.setup(config({
 		},
 	},
 }))
-
 require("lspconfig").rust_analyzer.setup(config({
 	settings = {
 		["rust-analyzer"] = {
@@ -192,12 +196,8 @@ require("lspconfig").rust_analyzer.setup(config({
 				importPrefix = "self",
 				unimportedPackages = "off",
 			},
-			cargo = {
-				loadOurDirsFromCheck = true,
-			},
-			procMacro = {
-				enable = true,
-			},
+			cargo = { loadOurDirsFromCheck = true },
+			procMacro = { enable = true },
 		},
 	},
 }))
@@ -205,7 +205,8 @@ require("lspconfig").rust_analyzer.setup(config({
 -- java does not work yet........ (-_-)
 require("lspconfig").jdtls.setup(config())
 --------------------------------------------
-require("lspconfig").ccls.setup(config()) -- c/cpp
+-- require("lspconfig").ccls.setup(config()) -- c/cpp
+require("lspconfig").clangd.setup(config())
 require("lspconfig").zls.setup(config())
 require("lspconfig").solang.setup(config())
 -- INFO: frontend focused
@@ -227,7 +228,9 @@ require("lspconfig").tailwindcss.setup(config({
 		tailwindCSS = {
 			experimental = {
 				classRegex = {
-					{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+					{ "cva\\(([^)]*)\\)",  "[\"'`]([^\"'`]*).*?[\"'`]" },
+					{ "tv\\(([^)]*)\\)",   "[\"'`]([^\"'`]*).*?[\"'`]" },
+					{ "clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
 				},
 			},
 		},
@@ -236,7 +239,6 @@ require("lspconfig").tailwindcss.setup(config({
 -- require("lspconfig").graphql.setup(config())
 require("lspconfig").svelte.setup(config())
 -- other
-require("lspconfig").sqlls.setup(config())
 require("lspconfig").bashls.setup(config())
 require("lspconfig").dockerls.setup(config())
 require("lspconfig").ansiblels.setup(config())

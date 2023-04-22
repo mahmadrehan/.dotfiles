@@ -19,5 +19,16 @@ local snippets, autosnippets = {}, {}
 -- snippets, it'll take 10-20 mins max trust me it'll be worth it
 
 table.insert(snippets, s("wth", { t("hocus pocus") }))
+table.insert(
+    snippets,
+    s("ccbp", {
+        t({
+            "testcases = int(input())",
+            "",
+            "for i in range(testcases):",
+            "    ...",
+        }),
+    })
+)
 
 return snippets, autosnippets

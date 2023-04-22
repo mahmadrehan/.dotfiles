@@ -1,0 +1,111 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+
+  "modules-left": ["clock", "wlr/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "cpu",
+    "memory",
+    // "bluetooth",
+    "network",
+    "wireplumber"
+  ],
+
+  "clock": {
+    "interval": 2,
+    "format": "{:%a, %b %d, %Y / %I:%M:%S %p}  ",
+    "tooltip-format": "<big>{:%Y, %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "wlr/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "all-outputs": true,
+    "on-click": "activate",
+    // "format": "{icon}",
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": []
+    }
+  },
+
+  "hyprland/window": {
+    "format": "{}"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "min-length": 6,
+    "format": " {usage}%",
+    "on-click": "kitty -e btm"
+  },
+  "memory": {
+    "interval": 5,
+    "min-length": 12,
+    "format": " {used:0.1f}G/{total:0.1f}G",
+    "on-click": "kitty -e btm"
+  },
+  "network": {
+    "interface": "wlo1",
+    "interval": 30,
+    "max-length": 16,
+    "min-length": 8,
+    "tooltip-format": "{ipaddr} {signalStrength}%",
+    "format-ethernet": "󰈀 {essid}",
+    "format-wifi": " {essid}",
+    "tooltip-format-ethernet": "{ifname} ",
+    "format-disconnected": "󰤮 Disconnected",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "kitty -e nmcli device status && sleep 10",
+    "on-click-right": ""
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": ["", "", ""],
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+  },
+
+  "bluetooth": {
+    "controller": "",
+    "format-off": "󰂲 {status}",
+    "format-on": "󰂯 {status}",
+    "format-connected": " {status}",
+    "max-length": 16,
+    "tooltip": false,
+    "on-click": ""
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "tooltip": false,
+    "format-muted": " Muted",
+    "on-click": "pamixer -t",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  }
+}
