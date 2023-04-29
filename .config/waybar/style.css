@@ -20,10 +20,16 @@ button:hover {
 
 tooltip {
   background: #1e1e2e;
+  padding: 8px;
+  margin: 8px;
   border-radius: 8px;
-  border-width: 2px;
-  border-color: #b4befe;
-  padding: 2px;
+  border: 2px solid #b4befe;
+  color: #b4befe;
+}
+
+#workspaces {
+  background: rgba(0, 0, 0, 0);
+  padding: 4px;
 }
 
 #workspaces button {
@@ -60,20 +66,21 @@ tooltip {
 #memory,
 #wireplumber,
 #network,
-#workspaces,
 #user,
 #tray {
-  color: #1e1e2e;
   padding: 0 12px;
   margin-top: 4px;
   margin-bottom: 4px;
   margin-right: 4px;
-  border: 1px solid #181825;
+  border: 2px solid #181825;
   border-radius: 8px;
+  background-color: #181825;
+  color: #1e1e2e;
 }
 
 #clock {
-  background: #b4befe;
+  color: #b4befe;
+  border-color: #b4befe;
   margin-left: 4px;
   margin-right: 0px;
 }
@@ -81,9 +88,8 @@ tooltip {
 /* hyprland/window */
 #window {
   color: #b4befe;
-  background: #1e1e2e;
-  /* border: 2px solid rgba(180, 190, 254, 0.8); */
-  /* border-radius: 8px; */
+  background: rgba(0, 0, 0, 0.1);
+  border-width: 0px;
   margin-left: 32px;
   margin-right: 32px;
 }
@@ -91,26 +97,26 @@ tooltip {
 /* right side things */
 
 #cpu {
-  background: #f9e2af;
+  color: #f9e2af;
+  border-color: #f9e2af;
 }
 
 #memory {
-  background: #fab387;
+  color: #fab387;
+  border-color: #fab387;
 }
 
 #network {
-  background: #a6e3a1;
+  color: #a6e3a1;
+  border-color: #a6e3a1;
 }
 
 #wireplumber {
-  background: #89b4fa;
+  color: #89b4fa;
+  border-color: #89b4fa;
 }
 
 #bluetooth {
-  background: #cba6f7;
-}
-
-#custom-updates {
-  background: #f5c2e7;
-  margin-right: 4px;
+  color: #cba6f7;
+  border-color: #cba6f7;
 }

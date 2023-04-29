@@ -3,7 +3,8 @@
 ZSH_THEME="robbyrussell"
 
 # some shell envs vars
-export DOCKER_BUILDKIT=1
+export DOCKER_BUILDKIT=0
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export ANSIBLE_SCRIPT_DIR="/run/media/drives/documentSSD/main/Scripts/ansible"
 export VOLTA_HOME="$HOME/.volta"

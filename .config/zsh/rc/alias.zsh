@@ -8,6 +8,7 @@ MAIN_HDD_LOC="/run/media/drives/HDD1"
 ## Common / general ##
 
 alias n="nvim"
+alias t="tmux"
 alias cat="bat"
 alias grep="rg"
 alias l="lsd"
@@ -79,3 +80,4 @@ alias nvimconf="cd ~/.config/nvim && n ."
 alias zconf="cd ~/.config/zsh && n ."
 alias termconf="cd ~/.config/kitty"
 alias hypconf="cd ~/.config/hypr/ && n hyprland.conf"
+alias wayconf="cd ~/.config/waybar/ && n config.jsonc"

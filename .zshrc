@@ -32,16 +32,18 @@ eval "$(starship init zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+CONDA_PATH="/run/media/drives/HDD1/data/anaconda3"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/run/media/drives/freeNVMe/jupyter/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$("$CONDA_PATH/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/run/media/drives/freeNVMe/jupyter/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/run/media/drives/freeNVMe/jupyter/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$CONDA_PATH/etc/profile.d/conda.sh" ]; then
+        . "$CONDA_PATH/etc/profile.d/conda.sh"
     else
-        export PATH="/run/media/drives/freeNVMe/jupyter/anaconda3/bin:$PATH"
+        export PATH="$CONDA_PATH/bin:$PATH"
     fi
 fi
 unset __conda_setup
