@@ -54,6 +54,6 @@ vim.g.mapleader = " "
 
 o.termguicolors = true
 -- to make the cursor thick for all modes
--- o.guicursor = ""
+o.guicursor = ""
 
 vim.cmd("set t_Co=256")

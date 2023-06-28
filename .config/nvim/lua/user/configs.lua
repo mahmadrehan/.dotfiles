@@ -34,6 +34,12 @@ autocmd({ "BufWritePre" }, {
 	command = "%s/\\s\\+$//e",
 })
 
+autocmd({ "BufRead", "BufEnter" }, {
+	group = PersonalGroup,
+	pattern = "*.astro",
+	command = "set filetype=astro",
+})
+
 -- ---------------------------
 -- - python config
 -- ---------------------------

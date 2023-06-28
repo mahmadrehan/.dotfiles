@@ -9,7 +9,7 @@ nnoremap("<leader>a", function()
 	mark.add_file()
 end, silent)
 
-nnoremap("<leader>h", function()
+nnoremap("<C-b>", function()
 	ui.toggle_quick_menu()
 end, silent)
 

@@ -22,4 +22,3 @@ if pcall(require, "plenary") then
 end
 
 require("user.settings")
-

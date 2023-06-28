@@ -53,7 +53,7 @@ local opts = { silent = true }
 
 nnoremap("<leader>fd", ":Telescope live_grep<CR>")
 
-nnoremap("<C-b>", function()
+nnoremap("<leader>h", function()
 	require("telescope").extensions.recent_files.pick()
 end, opts)
 

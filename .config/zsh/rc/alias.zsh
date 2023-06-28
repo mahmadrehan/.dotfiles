@@ -55,11 +55,10 @@ alias listenvs="conda info --envs"
 alias activate="conda activate $1"
 alias deactivate="conda deactivate"
 
-alias setupk8s="bash ~/.config/scripts/setup/dev_k8s_cluster.sh"
-alias dup="sudo systemctl start docker"
-alias drmi="Check zconf line 59 for the command"
+alias pman="podman"
+
 # INFO: quick command to filter and remove select
-#       > docker images docker rmi -f $(docker images | grep "fastapi" | awk "{print \$3}")
+#       > docker rmi -f $(docker images | grep "fastapi" | awk "{print \$3}")
 
 
 ## for navigating to directories ##
@@ -79,5 +78,7 @@ alias github="cd $DOC_SSD_LOC/main/GitHub"
 alias nvimconf="cd ~/.config/nvim && n ."
 alias zconf="cd ~/.config/zsh && n ."
 alias termconf="cd ~/.config/kitty"
-alias hypconf="cd ~/.config/hypr/ && n hyprland.conf"
-alias wayconf="cd ~/.config/waybar/ && n config.jsonc"
+# alias hypconf="cd ~/.config/hypr/ && n hyprland.conf"
+# alias wayconf="cd ~/.config/waybar/ && n config.jsonc"
+alias i3conf="cd ~/.config/i3/ && n config"
+alias polyconf="cd ~/.config/polybar/ && n config"

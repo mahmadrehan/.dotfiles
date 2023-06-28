@@ -12,11 +12,11 @@ EXT_SDD_LOC="/run/media/drives/freeNVMe"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666,bold" #,underline"
 
 HYPHEN_INSENSITIVE="true"
-plugins=( git z zsh-autosuggestions )
+plugins=(git zsh-autosuggestions)
 
 # other stuff
 source $ZSH/oh-my-zsh.sh
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 source "$ZSH_CUSTOM_DIR/rc/base.zsh"
 source "$ZSH_CUSTOM_DIR/rc/alias.zsh"
 source "$ZSH_CUSTOM_DIR/rc/paths.zsh"
@@ -51,3 +51,10 @@ unset __conda_setup
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/home/aether/.bun/_bun" ] && source "/home/aether/.bun/_bun"

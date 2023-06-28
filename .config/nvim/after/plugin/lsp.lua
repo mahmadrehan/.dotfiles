@@ -93,16 +93,31 @@ nls.setup(config({
 		nlsb.formatting.rustfmt,
 		nlsb.formatting.zigfmt,
 		nlsb.formatting.markdownlint,
-		nlsb.formatting.black,
 		nlsb.formatting.shfmt,
+		nlsb.formatting.black.with({
+			extra_args = { "--line-length", "82" },
+		}),
 		nlsb.formatting.xmlformat,
 	},
 }))
 
 -- Dart
 require("lspconfig").dartls.setup(config())
+
 -- python
-require("lspconfig").pyright.setup(config())
+-- require("lspconfig").pyright.setup(config())
+require("lspconfig").pylsp.setup(config({
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { "W391", "W503", "E203" },
+					maxLineLength = 82,
+				},
+			},
+		},
+	},
+}))
 
 -- GoLang
 require("lspconfig").gopls.setup(config({
@@ -175,6 +190,7 @@ require("lspconfig").prismals.setup(config({
 	filetypes = { "prisma" },
 	cmd = { "prisma-language-server", "--stdio" },
 }))
+
 require("lspconfig").tailwindcss.setup(config({
 	settings = {
 		tailwindCSS = {
@@ -188,7 +204,8 @@ require("lspconfig").tailwindcss.setup(config({
 		},
 	},
 }))
--- require("lspconfig").graphql.setup(config())
+
+require("lspconfig").graphql.setup(config())
 require("lspconfig").svelte.setup(config())
 -- other
 require("lspconfig").bashls.setup(config())
