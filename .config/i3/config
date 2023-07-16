@@ -79,7 +79,7 @@ bindsym $mod+b exec brave --new-window https://search.brave.com
 bindsym $mod+c exec firefox
 
 # INFO: special bind, to startup a windows 11 vm
-bindsym $mod+Shift+w exec /run/media/drives/documentSSD/main/Scripts/start-windows-vm
+bindsym $mod+Shift+p exec /run/media/drives/documentSSD/main/Scripts/start-windows-vm
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run

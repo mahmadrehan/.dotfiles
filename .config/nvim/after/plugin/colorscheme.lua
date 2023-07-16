@@ -114,10 +114,10 @@ function Catppuccin()
 		return
 	end
 	_k.setup({
-		flavour = "mocha", -- latte, frappe, macchiato, mocha
+		flavour = "macchiato", -- latte, frappe, macchiato, mocha
 		background = {
-			light = "mocha",
-			dark = "mocha",
+			light = "macchiato",
+			dark = "macchiato",
 		},
 		transparent_background = true,
 		show_end_of_buffer = false, -- show the '~' characters after the end of buffers

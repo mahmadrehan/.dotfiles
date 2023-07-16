@@ -1,3 +1,7 @@
+local ok, lspconfig = pcall(require, "lspconfig")
+if not ok then
+	return
+end
 local ok, lsaga = pcall(require, "lspsaga")
 if not ok then
 	return
@@ -102,11 +106,11 @@ nls.setup(config({
 }))
 
 -- Dart
-require("lspconfig").dartls.setup(config())
+lspconfig.dartls.setup(config())
 
 -- python
--- require("lspconfig").pyright.setup(config())
-require("lspconfig").pylsp.setup(config({
+-- lspconfig.pyright.setup(config())
+lspconfig.pylsp.setup(config({
 	settings = {
 		pylsp = {
 			plugins = {
@@ -120,7 +124,7 @@ require("lspconfig").pylsp.setup(config({
 }))
 
 -- GoLang
-require("lspconfig").gopls.setup(config({
+lspconfig.gopls.setup(config({
 	cmd = { "gopls", "serve" },
 	filetypes = { "go", "gomod" },
 	settings = {
@@ -132,7 +136,7 @@ require("lspconfig").gopls.setup(config({
 		},
 	},
 }))
-require("lspconfig").lua_ls.setup(config({
+lspconfig.lua_ls.setup(config({
 	settings = {
 		Lua = {
 			runtime = {
@@ -155,43 +159,38 @@ require("lspconfig").lua_ls.setup(config({
 		},
 	},
 }))
-require("lspconfig").rust_analyzer.setup(config({
+
+lspconfig.taplo.setup(config())
+
+lspconfig.rust_analyzer.setup(config({
 	settings = {
 		["rust-analyzer"] = {
-			assist = {
-				importGranularity = "module",
-				importPrefix = "self",
-				unimportedPackages = "off",
+			cargo = {
+				features = "all",
 			},
-			cargo = { loadOurDirsFromCheck = true },
-			procMacro = { enable = true },
 		},
 	},
 }))
 
 -- java does not work yet........ (-_-)
-require("lspconfig").jdtls.setup(config())
+lspconfig.jdtls.setup(config())
 --------------------------------------------
--- require("lspconfig").ccls.setup(config()) -- c/cpp
-require("lspconfig").clangd.setup(config())
-require("lspconfig").zls.setup(config())
-require("lspconfig").solang.setup(config())
+-- lspconfig.ccls.setup(config()) -- c/cpp
+lspconfig.clangd.setup(config())
+lspconfig.zls.setup(config())
+lspconfig.solang.setup(config())
 -- INFO: frontend focused
 -- JS/TS
-require("lspconfig").tsserver.setup(config({
-	-- root_dir = require("lspconfig.util").root_pattern(".git"),
-}))
-require("lspconfig").html.setup(config())
-require("lspconfig").cssls.setup(config())
-require("lspconfig").astro.setup(config({
-	filetypes = { "astro" },
-}))
-require("lspconfig").prismals.setup(config({
+lspconfig.tsserver.setup(config({}))
+lspconfig.html.setup(config())
+lspconfig.cssls.setup(config())
+lspconfig.astro.setup(config({ filetypes = { "astro" } }))
+lspconfig.prismals.setup(config({
 	filetypes = { "prisma" },
 	cmd = { "prisma-language-server", "--stdio" },
 }))
 
-require("lspconfig").tailwindcss.setup(config({
+lspconfig.tailwindcss.setup(config({
 	settings = {
 		tailwindCSS = {
 			experimental = {
@@ -205,10 +204,10 @@ require("lspconfig").tailwindcss.setup(config({
 	},
 }))
 
-require("lspconfig").graphql.setup(config())
-require("lspconfig").svelte.setup(config())
+lspconfig.graphql.setup(config())
+lspconfig.svelte.setup(config())
 -- other
-require("lspconfig").bashls.setup(config())
-require("lspconfig").dockerls.setup(config())
-require("lspconfig").ansiblels.setup(config())
-require("lspconfig").bufls.setup(config())
+lspconfig.bashls.setup(config())
+lspconfig.dockerls.setup(config())
+lspconfig.ansiblels.setup(config())
+lspconfig.bufls.setup(config())
