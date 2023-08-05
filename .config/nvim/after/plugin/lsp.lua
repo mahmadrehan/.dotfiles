@@ -84,16 +84,31 @@ nls.setup(config({
 		-- diagnostics
 		-- nlsb.diagnostics.protolint,
 		nlsb.diagnostics.tsc,
-		nlsb.diagnostics.sqlfluff.with({
-			extra_args = { "--dialect", "mysql" },
-		}),
+		-- nlsb.diagnostics.sqlfluff.with({
+		-- 	extra_args = { "--dialect", "mysql" },
+		-- }),
+		-- nlsb.diagnostics.eslint_d,
 		-- formatters
 		nlsb.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "mysql" },
 		}),
 		nlsb.formatting.gofmt,
 		nlsb.formatting.stylua,
-		nlsb.formatting.prettierd,
+		nlsb.formatting.prettierd.with({
+			filetypes = {
+				"html",
+				"css",
+				"json",
+				"yaml",
+				"svelte",
+				"javascript",
+				"typescript",
+				"jsx",
+				"tsx",
+				"graphql",
+				"graphqls",
+			},
+		}),
 		nlsb.formatting.rustfmt,
 		nlsb.formatting.zigfmt,
 		nlsb.formatting.markdownlint,

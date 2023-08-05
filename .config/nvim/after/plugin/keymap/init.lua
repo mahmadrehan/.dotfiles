@@ -15,6 +15,9 @@ nnoremap("<C-q>", ":wqa<CR>")
 nnoremap("<leader>q", ":bd!<CR>")
 vnoremap("<leader>q", ":bd!<CR>")
 
+nnoremap("<leader>w", ":wall<CR>")
+vnoremap("<leader>w", ":wall<CR>")
+
 nnoremap("<leader>op", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- INFO: this cursed keybind has to exist because of neotree's overriding of the foldmethod

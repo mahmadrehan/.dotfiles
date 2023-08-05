@@ -45,8 +45,11 @@ telescope.setup({
 telescope.load_extension("fzy_native")
 telescope.load_extension("harpoon")
 telescope.load_extension("recent_files")
+
 -- ---
--- telescope rempas
+--
+-- INFO: telescope rempas
+--
 -- ---
 
 local opts = { silent = true }
@@ -83,7 +86,7 @@ end, opts)
 
 nnoremap("<Leader>gc", function()
 	require("telescope.builtin").git_branches({
-		attach_mappings = function(_prompt_bufnr, map)
+		attach_mappings = function(_, map)
 			map("i", "<c-d>", actions.git_delete_branch)
 			map("n", "<c-d>", actions.git_delete_branch)
 			return true
