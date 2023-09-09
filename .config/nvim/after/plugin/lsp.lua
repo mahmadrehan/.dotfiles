@@ -92,7 +92,9 @@ nls.setup(config({
 		nlsb.formatting.sqlfluff.with({
 			extra_args = { "--dialect", "mysql" },
 		}),
-		nlsb.formatting.gofmt,
+		nlsb.formatting.golines.with({
+			extra_args = { "-m", "82" },
+		}),
 		nlsb.formatting.stylua,
 		nlsb.formatting.prettierd.with({
 			filetypes = {
@@ -103,6 +105,8 @@ nls.setup(config({
 				"svelte",
 				"javascript",
 				"typescript",
+				"javascriptreact",
+				"typescriptreact",
 				"jsx",
 				"tsx",
 				"graphql",
