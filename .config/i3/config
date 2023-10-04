@@ -21,12 +21,17 @@ exec_always xrandr --output HDMI-1 --mode 1920x1080 --rate 75
 
 # INFO: custom startup stuff
 exec_always --no-startup-id picom -fcb
+exec_always feh --bg-fill ~/.wallpapers/portal-somewhere-to-another-dimension.png
 exec_always xset r rate 218 50
-exec_always feh --bg-fill ~/.wallpapers/japanese-bg.jpg
+# If I don't, then I have to do the host-vm switching every 10 mins
+exec_always xset s off
+exec_always xset -dpms
 
 exec --no-startup-id polybar
 exec eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)
 exec eval $(ssh-agent)
+
+exec --no-startup-id xsetroot -cursor_name Catppuccin-Mocha-Rosewater
 
                           # class       border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused #77dd77 #404eb9 #ffffff #404eb9   #5160c7

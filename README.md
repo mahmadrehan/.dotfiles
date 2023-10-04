@@ -1,9 +1,9 @@
 # .dotfiles
 
-My most important dotfiles for quickly replicating the base development environment.
+My most important dotfiles for quickly replicating my base development env.
 
 OS: Arch linux
+
 DE: i3
-DE: Hyprland(too bleeding edge for me)
 
 ---

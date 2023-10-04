@@ -76,7 +76,13 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
+	use({
+		"NeogitOrg/neogit",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+		},
+	})
 	-- use("tpope/vim-fugitive")
 
 	-- For Visulaizing Vim Marks
@@ -106,7 +112,7 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua") -- for showing colors for hex codes
 	use("lukas-reineke/indent-blankline.nvim")
 
-	use("rose-pine/neovim")
+	-- use("rose-pine/neovim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
 	use({ "rebelot/kanagawa.nvim" })
 	use({ "catppuccin/nvim", as = "catppuccin" })

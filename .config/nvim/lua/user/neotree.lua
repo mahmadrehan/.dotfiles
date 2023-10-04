@@ -111,7 +111,7 @@ ntree.setup({
 			hide_by_pattern = {},
 			never_show = {},
 		},
-		follow_current_file = true,
+		follow_current_file = { enabled = true },
 		group_empty_dirs = false, -- when true, empty folders will be grouped together
 		-- disabled, open_current and something else which gave me a pain in the neck
 		hijack_netrw_behavior = "open_current",
@@ -119,7 +119,7 @@ ntree.setup({
 		-- instead of relying on nvim autocmd events.
 		window = {
 			mappings = {
-				["<bs>"] = "navigate_up",
+				["<c-bs>"] = "navigate_up",
 				["."] = "set_root",
 				["H"] = "toggle_hidden",
 				["/"] = "fuzzy_finder",
@@ -131,14 +131,14 @@ ntree.setup({
 		},
 	},
 	buffers = {
-		follow_current_file = true, -- This will find and focus the file in the active buffer every
+		follow_current_file = { enabled = true }, -- This will find and focus the file in the active buffer every
 		-- time the current file is changed while the tree is open.
-		group_empty_dirs = true, -- when true, empty folders will be grouped together
+		group_empty_dirs = true,            -- when true, empty folders will be grouped together
 		show_unloaded = true,
 		window = {
 			mappings = {
 				["bd"] = "buffer_delete",
-				["<bs>"] = "navigate_up",
+				["<c-bs>"] = "navigate_up",
 				["."] = "set_root",
 			},
 		},
@@ -172,4 +172,4 @@ ntree.setup({
 
 -- NeoTree Keymaps
 -- vim.keymap.set("n", "<C-m>", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("n", "\\", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "\\", ":Neotree float toggle<cr>", { noremap = true, silent = true })
