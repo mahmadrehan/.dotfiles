@@ -3,6 +3,4 @@ if not ok then
 	return
 end
 
-bbq.setup({
-	theme = "catppuccin",
-})
+bbq.setup({ theme = "catppuccin" })

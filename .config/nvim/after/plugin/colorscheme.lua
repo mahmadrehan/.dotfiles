@@ -157,7 +157,6 @@ function Catppuccin()
 	vim.cmd.colorscheme("catppuccin")
 end
 
--- RosePine()
 -- TokyoNight()
 -- Kanagawa()
 Catppuccin()

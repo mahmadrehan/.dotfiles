@@ -16,8 +16,8 @@ local s = "> "
 local source_mapping = {
 	nvim_lsp = s .. "LSP",
 	nvim_lua = s .. "Lua",
-	cmp_tabnine = s .. "T9",
 	path = s .. "Path",
+	calc = s .. "Mafs",
 	cmp_path = s .. "Path",
 	luasnip = s .. "LuaSnip",
 }
@@ -35,10 +35,12 @@ local mappings = {
 cmp.setup({
 	mapping = mappings,
 	sources = {
-		-- { name = "cmp_tabnine" },
 		{ name = "nvim_lsp" },
-		{ name = "path",    option = { trailing_slash = true } },
-		{ name = "luasnip", option = { use_show_condition = false } },
+		{ name = "path",         option = { trailing_slash = true } },
+		{ name = "calc" },
+		{ name = "luasnip",      option = { use_show_condition = false } },
+		{ name = "emoji" },
+		{ name = "latex_symbols" },
 	},
 	snippet = {
 		expand = function(args)
@@ -71,12 +73,6 @@ cmp.setup({
 				vim_item.kind = lspkind.presets.default[vim_item.kind]
 			end
 			local menu = source_mapping[entry.source.name]
-			-- if entry.source.name == "cmp_tabnine" then
-			-- 	if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-			-- 		menu = entry.completion_item.data.detail .. " " .. menu
-			-- 	end
-			-- 	vim_item.kind = ""
-			-- end
 
 			-- vim_item.kind = vim_item.kind .. " " .. c_type
 			vim_item.menu = menu
@@ -135,13 +131,3 @@ if not ok then
 	return
 end
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
--- Tabnine Completions
-
--- tabnine:setup({
--- 	max_lines = 1000,
--- 	max_num_results = 10,
--- 	sort = true,
--- 	run_on_every_keystroke = true,
--- 	snippet_placeholder = "..",
--- })

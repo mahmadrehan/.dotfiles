@@ -47,6 +47,10 @@ local function config(_config)
 				vim.cmd("Lspsaga hover_doc")
 				-- vim.lsp.buf.hover()
 			end, opts)
+			-- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, getOpts("Signature help"))
+			nnoremap("<C-k>", function()
+				vim.lsp.buf.signature_help()
+			end, opts)
 			nnoremap("<leader>gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 			nnoremap("<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
 			nnoremap("]d", function()
@@ -192,7 +196,7 @@ lspconfig.rust_analyzer.setup(config({
 }))
 
 -- java does not work yet........ (-_-)
-lspconfig.jdtls.setup(config())
+lspconfig.jdtls.setup(config({}))
 --------------------------------------------
 -- lspconfig.ccls.setup(config()) -- c/cpp
 lspconfig.clangd.setup(config())

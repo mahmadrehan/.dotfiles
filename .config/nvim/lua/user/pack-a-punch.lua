@@ -15,22 +15,25 @@ packer.init({
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 	use("nvim-lua/plenary.nvim")
-	use("lewis6991/impatient.nvim")
 
 	-- base required stuff
 	use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use("nvim-treesitter/nvim-treesitter-context")
+
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-calc")
 	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/cmp-emoji")
+	use("kdheepak/cmp-latex-symbols")
 
-	-- ai-aided completion
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
-	-- use({ 'codota/tabnine-nvim', run = "./dl_binaries.sh" })
-	use({ "github/copilot.vim" })
+	use("zbirenbaum/copilot.lua")
+	-- use("github/copilot.vim")
 
 	use("glepnir/lspsaga.nvim")
 	use("onsails/lspkind-nvim")
@@ -43,19 +46,11 @@ return packer.startup(function(use)
 	use("MunifTanjim/nui.nvim")
 	use("nvim-neo-tree/neo-tree.nvim")
 
-	use({ "akinsho/toggleterm.nvim", tag = "*" })
-
-	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-	use("nvim-treesitter/nvim-treesitter-context")
-
 	-- for somewhat global formatting, linting etc.
 	use("jose-elias-alvarez/null-ls.nvim")
 
 	-- Harpoon man
 	use("ThePrimeagen/harpoon")
-
-	-- it's non existant at this point
-	-- use({ "noib3/cokeline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- for playing sherlock with the code
 	use("nvim-telescope/telescope.nvim")
@@ -112,7 +107,6 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua") -- for showing colors for hex codes
 	use("lukas-reineke/indent-blankline.nvim")
 
-	-- use("rose-pine/neovim")
 	use({ "folke/tokyonight.nvim", branch = "main" })
 	use({ "rebelot/kanagawa.nvim" })
 	use({ "catppuccin/nvim", as = "catppuccin" })

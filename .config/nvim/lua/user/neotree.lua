@@ -172,4 +172,4 @@ ntree.setup({
 
 -- NeoTree Keymaps
 -- vim.keymap.set("n", "<C-m>", ":NeoTreeFloatToggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("n", "\\", ":Neotree float toggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "\\", ":Neotree float toggle reveal<cr>", { noremap = true, silent = true })

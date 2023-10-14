@@ -43,8 +43,12 @@ telescope.setup({
 })
 
 telescope.load_extension("fzy_native")
-telescope.load_extension("harpoon")
 telescope.load_extension("recent_files")
+
+local ok, _ = pcall(require, "harpoon")
+if ok then
+	telescope.load_extension("harpoon")
+end
 
 -- ---
 --

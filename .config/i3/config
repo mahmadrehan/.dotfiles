@@ -21,7 +21,7 @@ exec_always xrandr --output HDMI-1 --mode 1920x1080 --rate 75
 
 # INFO: custom startup stuff
 exec_always --no-startup-id picom -fcb
-exec_always feh --bg-fill ~/.wallpapers/portal-somewhere-to-another-dimension.png
+exec_always feh --bg-fill ~/.wallpapers/nice-bg.png
 exec_always xset r rate 218 50
 # If I don't, then I have to do the host-vm switching every 10 mins
 exec_always xset s off
