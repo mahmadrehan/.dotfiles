@@ -8,7 +8,9 @@ MAIN_HDD_LOC="/run/media/drives/HDD1"
 ## Common / general ##
 
 alias n="nvim"
-alias t="tmux"
+alias np="nvim ."
+alias t='tmux new-session -s "$(basename "$(pwd)")"'
+alias t2="tmux"
 alias tls="tmux ls"
 alias tattach="tmux attach -t"
 alias tdetach="tmux detach"

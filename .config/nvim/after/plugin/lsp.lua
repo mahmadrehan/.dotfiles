@@ -75,59 +75,6 @@ local function config(_config)
 	}, _config or {})
 end
 
-local ok, nls = pcall(require, "null-ls")
-
-if not ok then
-	return
-end
-
-local nlsb = nls.builtins
-
-nls.setup(config({
-	sources = {
-		-- diagnostics
-		-- nlsb.diagnostics.protolint,
-		nlsb.diagnostics.tsc,
-		-- nlsb.diagnostics.sqlfluff.with({
-		-- 	extra_args = { "--dialect", "mysql" },
-		-- }),
-		-- nlsb.diagnostics.eslint_d,
-		-- formatters
-		nlsb.formatting.sqlfluff.with({
-			extra_args = { "--dialect", "mysql" },
-		}),
-		nlsb.formatting.golines.with({
-			extra_args = { "-m", "82" },
-		}),
-		nlsb.formatting.stylua,
-		nlsb.formatting.prettierd.with({
-			filetypes = {
-				"html",
-				"css",
-				"json",
-				"yaml",
-				"svelte",
-				"javascript",
-				"typescript",
-				"javascriptreact",
-				"typescriptreact",
-				"jsx",
-				"tsx",
-				"graphql",
-				"graphqls",
-			},
-		}),
-		nlsb.formatting.rustfmt,
-		nlsb.formatting.zigfmt,
-		nlsb.formatting.markdownlint,
-		nlsb.formatting.shfmt,
-		nlsb.formatting.black.with({
-			extra_args = { "--line-length", "82" },
-		}),
-		nlsb.formatting.xmlformat,
-	},
-}))
-
 -- Dart
 lspconfig.dartls.setup(config())
 
@@ -200,7 +147,6 @@ lspconfig.jdtls.setup(config({}))
 --------------------------------------------
 -- lspconfig.ccls.setup(config()) -- c/cpp
 lspconfig.clangd.setup(config())
-lspconfig.zls.setup(config())
 lspconfig.solang.setup(config())
 -- INFO: frontend focused
 -- JS/TS
@@ -227,6 +173,7 @@ lspconfig.tailwindcss.setup(config({
 	},
 }))
 
+-- lspconfig.kotlin_language_server.setup(config())
 lspconfig.graphql.setup(config())
 lspconfig.svelte.setup(config())
 -- other
@@ -234,3 +181,54 @@ lspconfig.bashls.setup(config())
 lspconfig.dockerls.setup(config())
 lspconfig.ansiblels.setup(config())
 lspconfig.bufls.setup(config())
+
+-- INFO: Deprecated setup
+
+local ok, nls = pcall(require, "null-ls")
+
+if not ok then
+	return
+end
+
+local nlsb = nls.builtins
+
+nls.setup(config({
+	sources = {
+		-- diagnostics
+		-- nlsb.diagnostics.protolint,
+		nlsb.diagnostics.tsc,
+		-- formatters
+		nlsb.formatting.sqlfluff.with({
+			extra_args = { "--dialect", "mysql" },
+		}),
+		nlsb.formatting.golines.with({
+			extra_args = { "-m", "82" },
+		}),
+		nlsb.formatting.stylua,
+		nlsb.formatting.prettierd.with({
+			filetypes = {
+				"html",
+				"css",
+				"json",
+				"yaml",
+				"svelte",
+				"javascript",
+				"typescript",
+				"javascriptreact",
+				"typescriptreact",
+				"jsx",
+				"tsx",
+				"graphql",
+				"graphqls",
+			},
+		}),
+		nlsb.formatting.rustfmt,
+		nlsb.formatting.zigfmt,
+		nlsb.formatting.markdownlint,
+		nlsb.formatting.shfmt,
+		nlsb.formatting.black.with({
+			extra_args = { "--line-length", "82" },
+		}),
+		nlsb.formatting.xmlformat,
+	},
+}))

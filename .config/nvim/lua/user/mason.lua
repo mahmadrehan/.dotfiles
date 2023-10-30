@@ -74,7 +74,6 @@ require("mason-lspconfig").setup({
     "svelte",
     "tailwindcss",
     "yamlls",
-    "zls",
   },
   automatic_installation = true,
 })
