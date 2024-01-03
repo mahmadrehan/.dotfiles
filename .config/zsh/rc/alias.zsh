@@ -20,26 +20,15 @@ alias l="lsd"
 alias ll="lsd -laS"
 alias lll="lsd -laS --total-size"
 alias tree="lsd --tree"
-# alias rm="rm -I --preserve-root"
+ # alias rm="rm -I --preserve-root"
 alias untar="tar -zxvf $1"
 alias kpid="kill -SIGKILL"
-alias gpustats="watch -n 1 nvidia-smi"
 alias rmnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 alias oimg="kitty +kitten icat"
 
 ## For managing dotfiles ##
 
 alias dotconfig="/usr/bin/git --git-dir=$HOME/dotfiles.git --work-tree=$HOME"
-
-## pacman ##
-
-alias pup="sudo pacman -Syu --noconfirm"
-alias pdown="sudo pacman -S $1"
-alias psearch="sudo pacman -sS $1"
-alias pshow-unused="sudo pacman -Qtdq"
-alias pclean="sudo pacman -Sc"
-alias pla="sudo pacman -Q"
-alias aursearch="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk \"{print \$2}\")' | xargs -ro yay -S"
 
 ## chmod-ing ##
 
