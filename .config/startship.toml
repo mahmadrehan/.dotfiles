@@ -1,0 +1,13 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+scan_timeout = 10
+command_timeout = 2000
+
+format = "$all"
+
+[character]
+success_symbol = "[>_](bold white)"
+error_symbol = "[>_](bold red)"
+
+[package]
+disabled = false
