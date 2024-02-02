@@ -20,7 +20,7 @@ plugins=(
   zsh-syntax-highlighting
   # zsh-completions
   zoxide
-)
+ podman bun golang volta)
 
 HYPHEN_INSENSITIVE="true"
 

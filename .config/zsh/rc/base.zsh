@@ -14,6 +14,6 @@ export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
 # INFO: some keymaps
 bindkey -s ^f "source goto-project\n"
-# bindkey -s ^g "tmux-sessionizer\n"
+bindkey -s ^u "source goto-university-stuff\n"
 
 setopt nocaseglob
