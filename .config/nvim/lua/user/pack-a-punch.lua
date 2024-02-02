@@ -54,7 +54,6 @@ return packer.startup(function(use)
 	-- Harpoon man
 	use({ "ThePrimeagen/harpoon", branch = "harpoon2" })
 
-
 	-- for playing sherlock with the code
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
@@ -74,13 +73,13 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-	use({
-		"NeogitOrg/neogit",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-		},
-	})
+	-- use({
+	-- 	"NeogitOrg/neogit",
+	-- 	requires = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"sindrets/diffview.nvim",
+	-- 	},
+	-- })
 	-- use("tpope/vim-fugitive")
 
 	-- For Visulaizing Vim Marks

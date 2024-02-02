@@ -40,6 +40,18 @@ autocmd({ "BufRead", "BufEnter" }, {
 	command = "set filetype=astro",
 })
 
+autocmd({ "BufRead", "BufEnter" }, {
+	group = PersonalGroup,
+	pattern = "*.templ",
+	command = "set filetype=templ",
+})
+
+autocmd({ "BufRead", "BufEnter" }, {
+	group = PersonalGroup,
+	pattern = "*.m",
+	command = "set filetype=matlab",
+})
+
 -- ---------------------------
 -- - python config
 -- ---------------------------

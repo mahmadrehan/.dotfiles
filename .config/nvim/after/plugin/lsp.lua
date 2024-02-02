@@ -75,6 +75,8 @@ local function config(_config)
 	}, _config or {})
 end
 
+vim.filetype.add({ extension = { templ = "templ" } })
+
 -- Dart
 lspconfig.dartls.setup(config())
 
@@ -106,6 +108,7 @@ lspconfig.gopls.setup(config({
 		},
 	},
 }))
+
 lspconfig.lua_ls.setup(config({
 	settings = {
 		Lua = {
@@ -142,22 +145,32 @@ lspconfig.rust_analyzer.setup(config({
 	},
 }))
 
+lspconfig.matlab_ls.setup(config({
+	cmd = { "matlab-language-server" },
+	filetypes = { "matlab" },
+}))
+
 -- java does not work yet........ (-_-)
 lspconfig.jdtls.setup(config({}))
 --------------------------------------------
 -- lspconfig.ccls.setup(config()) -- c/cpp
 lspconfig.clangd.setup(config())
+lspconfig.asm_lsp.setup(config())
 lspconfig.solang.setup(config())
+
 -- INFO: frontend focused
 -- JS/TS
 lspconfig.tsserver.setup(config({}))
-lspconfig.html.setup(config())
-lspconfig.cssls.setup(config())
 lspconfig.astro.setup(config({ filetypes = { "astro" } }))
 lspconfig.prismals.setup(config({
 	filetypes = { "prisma" },
 	cmd = { "prisma-language-server", "--stdio" },
 }))
+
+lspconfig.html.setup(config({ filetypes = { "html" } }))
+lspconfig.templ.setup(config({ filetypes = { "templ" } }))
+lspconfig.htmx.setup(config({ filetypes = { "html", "templ" } }))
+lspconfig.cssls.setup(config())
 
 lspconfig.tailwindcss.setup(config({
 	settings = {
@@ -170,6 +183,16 @@ lspconfig.tailwindcss.setup(config({
 				},
 			},
 		},
+	},
+	filetypes = {
+		"html",
+		"css",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"svelte",
+		"templ",
 	},
 }))
 

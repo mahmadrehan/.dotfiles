@@ -11,13 +11,14 @@ export EXT_SDD_LOC="/Volumes/freeNVMe"
 source $ZSH/oh-my-zsh.sh
 
 # INFO: Autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#777,bold"
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#AAA,bold"
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 plugins=(
   git
   zsh-syntax-highlighting
-  zsh-completions
+  # zsh-completions
   zoxide
 )
 
