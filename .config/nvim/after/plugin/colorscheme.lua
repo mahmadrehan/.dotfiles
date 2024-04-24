@@ -6,7 +6,7 @@ function TokyoNight()
 	tkn.setup({
 		-- your configuration comes here
 		-- or leave it empty to use the default settings
-		style = "storm",  -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
+		style = "storm", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
 		transparent = true, -- Enable this to disable setting the background color
 		terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 		styles = {
@@ -120,7 +120,7 @@ function Catppuccin()
 			dark = "macchiato",
 		},
 		transparent_background = true,
-		show_end_of_buffer = false, -- show the '~' characters after the end of buffers
+		show_end_of_buffer = true, -- show the '~' characters after the end of buffers
 		term_colors = true,
 		dim_inactive = {
 			enabled = false,
@@ -157,6 +157,6 @@ function Catppuccin()
 	vim.cmd.colorscheme("catppuccin")
 end
 
--- TokyoNight()
+-- okyoNight()
 -- Kanagawa()
 Catppuccin()

@@ -52,6 +52,12 @@ autocmd({ "BufRead", "BufEnter" }, {
 	command = "set filetype=matlab",
 })
 
+autocmd({ "BufRead", "BufEnter" }, {
+	group = PersonalGroup,
+	pattern = "*.pcss",
+	command = "set filetype=css",
+})
+
 -- ---------------------------
 -- - python config
 -- ---------------------------

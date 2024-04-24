@@ -110,7 +110,6 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	use({ "folke/tokyonight.nvim", branch = "main" })
-	use({ "rebelot/kanagawa.nvim" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- The END, this marks the end of packing some punch in the editor --
