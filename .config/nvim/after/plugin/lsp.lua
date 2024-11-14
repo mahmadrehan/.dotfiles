@@ -71,11 +71,33 @@ local function config(_config)
 			nnoremap("<leader>f", function()
 				vim.lsp.buf.format({ async = true })
 			end, opts)
+
+			-- if client.supports_method("textDocument/formatting") then
+			-- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+			-- 		group = augroup,
+			-- 		buffer = bufnr,
+			-- 		callback = function()
+			-- 			vim.lsp.buf.format({})
+			-- 		end,
+			-- 	})
+			-- end
 		end,
 	}, _config or {})
 end
 
 vim.filetype.add({ extension = { templ = "templ" } })
+
+local ok, yes = pcall(require, "better-ts-errors")
+if not ok then
+	return
+end
+yes.setup({
+	keymaps = {
+		toggle = "<leader>dd", -- Toggling keymap
+		go_to_definition = "<leader>dx", -- Go to problematic type from popup window
+	},
+})
 
 -- Dart
 lspconfig.dartls.setup(config())
@@ -180,6 +202,8 @@ lspconfig.tailwindcss.setup(config({
 					{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
 					{ "tv\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
 					{ "clsx\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+					{ "classNames\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+					{ "className\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
 				},
 			},
 		},

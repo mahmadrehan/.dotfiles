@@ -11,7 +11,7 @@ telescope.setup({
 		file_sorter = require("telescope.sorters").get_fzy_sorter,
 		prompt_prefix = "   ",
 		color_devicons = true,
-		file_ignore_patterns = { "^%._" },
+		file_ignore_patterns = { "^%._", ".git/*" },
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",

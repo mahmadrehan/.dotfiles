@@ -26,6 +26,13 @@ alias kpid="kill -SIGKILL"
 alias rmnm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 alias oimg="kitty +kitten icat"
 
+alias gaa="git add ."
+alias gcm="git commit -m"
+alias gps="git push"
+
+alias gtp="source goto-project"
+alias gtup="source goto-university-stuff"
+
 ## For managing dotfiles ##
 
 alias dotconfig="/usr/bin/git --git-dir=$HOME/dotfiles.git --work-tree=$HOME"
@@ -46,8 +53,6 @@ alias dev="./scripts/dev.sh"
 alias ljv="sudo archlinux-java status"
 alias sjv="sudo archlinux-java set"
 alias listenvs="conda info --envs"
-alias activate="conda activate $1"
-alias deactivate="conda deactivate"
 
 alias pman="podman"
 

@@ -11,7 +11,7 @@ harpoon:setup()
 local silent = { silent = true }
 
 nnoremap("<leader>a", function()
-	harpoon:list():append()
+	harpoon:list():add()
 end, silent)
 
 nnoremap("<C-b>", function()

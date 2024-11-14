@@ -33,7 +33,6 @@ return packer.startup(function(use)
 	use("kdheepak/cmp-latex-symbols")
 
 	use("zbirenbaum/copilot.lua")
-	-- use("github/copilot.vim")
 
 	use("nvim-pack/nvim-spectre")
 
@@ -50,6 +49,9 @@ return packer.startup(function(use)
 
 	-- for somewhat global formatting, linting etc.
 	use("jose-elias-alvarez/null-ls.nvim")
+
+	-- for making the unreadable.. readable
+	use({ "OlegGulevskyy/better-ts-errors.nvim" })
 
 	-- Harpoon man
 	use({ "ThePrimeagen/harpoon", branch = "harpoon2" })
@@ -111,6 +113,12 @@ return packer.startup(function(use)
 
 	use({ "folke/tokyonight.nvim", branch = "main" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "EdenEast/nightfox.nvim" })
+
+	use({
+		"jesseleite/nvim-noirbuddy",
+		requires = { "tjdevries/colorbuddy.nvim" },
+	})
 
 	-- The END, this marks the end of packing some punch in the editor --
 	--

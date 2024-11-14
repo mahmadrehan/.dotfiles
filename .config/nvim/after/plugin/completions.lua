@@ -73,10 +73,17 @@ cmp.setup({
 			else
 				vim_item.kind = lspkind.presets.default[vim_item.kind]
 			end
+
 			local menu = source_mapping[entry.source.name]
 
 			-- vim_item.kind = vim_item.kind .. " " .. c_type
 			vim_item.menu = menu
+
+			-- Adding import path display
+			if entry.source.name == "nvim_lsp" and entry.completion_item.detail then
+				vim_item.menu = vim_item.menu .. " " .. entry.completion_item.detail
+			end
+
 			return vim_item
 		end,
 	},
@@ -117,7 +124,22 @@ local ok, nvim_ts_autotag = pcall(require, "nvim-ts-autotag")
 if not ok then
 	return
 end
-nvim_ts_autotag.setup({})
+nvim_ts_autotag.setup({
+	opts = {
+		-- Defaults
+		enable_close = true, -- Auto close tags
+		enable_rename = true, -- Auto rename pairs of tags
+		enable_close_on_slash = false, -- Auto close on trailing </
+	},
+	-- Also override individual filetype configs, these take priority.
+	-- Empty by default, useful if one of the "opts" global settings
+	-- doesn't work well in a specific filetype
+	per_filetype = {
+		["html"] = {
+			enable_close = false,
+		},
+	},
+})
 
 local ok, nvim_autopairs = pcall(require, "nvim-autopairs")
 if not ok then

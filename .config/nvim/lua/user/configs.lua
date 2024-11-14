@@ -58,6 +58,12 @@ autocmd({ "BufRead", "BufEnter" }, {
 	command = "set filetype=css",
 })
 
+autocmd({ "BufRead", "BufEnter" }, {
+	group = PersonalGroup,
+	pattern = "*.eta",
+	command = "set filetype=html",
+})
+
 -- ---------------------------
 -- - python config
 -- ---------------------------

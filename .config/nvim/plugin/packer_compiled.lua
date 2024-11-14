@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/aether/.cache/nvim/packer_hererocks/2.1.1713517273/share/lua/5.1/?.lua;/Users/aether/.cache/nvim/packer_hererocks/2.1.1713517273/share/lua/5.1/?/init.lua;/Users/aether/.cache/nvim/packer_hererocks/2.1.1713517273/lib/luarocks/rocks-5.1/?.lua;/Users/aether/.cache/nvim/packer_hererocks/2.1.1713517273/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/aether/.cache/nvim/packer_hererocks/2.1.1713517273/lib/lua/5.1/?.so"
+local package_path_str = "/Users/aether/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?.lua;/Users/aether/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?/init.lua;/Users/aether/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?.lua;/Users/aether/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/aether/.cache/nvim/packer_hererocks/2.1.1716656478/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -88,6 +88,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aether/.local/share/nvim/site/pack/packer/start/barbecue.nvim",
     url = "https://github.com/utilyre/barbecue.nvim"
+  },
+  ["better-ts-errors.nvim"] = {
+    loaded = true,
+    path = "/Users/aether/.local/share/nvim/site/pack/packer/start/better-ts-errors.nvim",
+    url = "https://github.com/OlegGulevskyy/better-ts-errors.nvim"
   },
   catppuccin = {
     loaded = true,
@@ -129,6 +134,11 @@ _G.packer_plugins = {
     path = "/Users/aether/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["colorbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/aether/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
+    url = "https://github.com/tjdevries/colorbuddy.nvim"
+  },
   ["copilot.lua"] = {
     loaded = true,
     path = "/Users/aether/.local/share/nvim/site/pack/packer/start/copilot.lua",
@@ -140,11 +150,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/Users/aether/.local/share/nvim/site/pack/packer/opt/dart-vim-plugin",
     url = "https://github.com/dart-lang/dart-vim-plugin"
-  },
-  ["eldritch.nvim"] = {
-    loaded = true,
-    path = "/Users/aether/.local/share/nvim/site/pack/packer/start/eldritch.nvim",
-    url = "https://github.com/eldritch-theme/eldritch.nvim"
   },
   ["emmet-vim"] = {
     loaded = false,
@@ -218,6 +223,11 @@ _G.packer_plugins = {
     path = "/Users/aether/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
     url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
   },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/aether/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
   ["nui.nvim"] = {
     loaded = true,
     path = "/Users/aether/.local/share/nvim/site/pack/packer/start/nui.nvim",
@@ -252,6 +262,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aether/.local/share/nvim/site/pack/packer/start/nvim-navic",
     url = "https://github.com/SmiteshP/nvim-navic"
+  },
+  ["nvim-noirbuddy"] = {
+    loaded = true,
+    path = "/Users/aether/.local/share/nvim/site/pack/packer/start/nvim-noirbuddy",
+    url = "https://github.com/jesseleite/nvim-noirbuddy"
   },
   ["nvim-spectre"] = {
     loaded = true,
@@ -348,11 +363,11 @@ vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType js ++once lua require("packer.load")({'vim-prisma'}, { ft = "js" }, _G.packer_plugins)]]
-vim.cmd [[au FileType dart ++once lua require("packer.load")({'dart-vim-plugin'}, { ft = "dart" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tsx ++once lua require("packer.load")({'emmet-vim'}, { ft = "tsx" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rust ++once lua require("packer.load")({'emmet-vim'}, { ft = "rust" }, _G.packer_plugins)]]
 vim.cmd [[au FileType jsx ++once lua require("packer.load")({'emmet-vim'}, { ft = "jsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tsx ++once lua require("packer.load")({'emmet-vim'}, { ft = "tsx" }, _G.packer_plugins)]]
+vim.cmd [[au FileType dart ++once lua require("packer.load")({'dart-vim-plugin'}, { ft = "dart" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType prisma ++once lua require("packer.load")({'vim-prisma'}, { ft = "prisma" }, _G.packer_plugins)]]
 vim.cmd [[au FileType ts ++once lua require("packer.load")({'vim-prisma'}, { ft = "ts" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
